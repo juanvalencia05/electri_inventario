@@ -20,13 +20,13 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
                 NpgsqlCommand comando = new NpgsqlCommand(sqlInsertar, objetoConexion.establecerConexion());
  
                 NpgsqlDataReader reader = comando.ExecuteReader();
-                MessageBox.Show("Se puedo guardo la informacion");
+                MessageBox.Show("Se puedo guardo la información");
                 while (reader.Read()) { }
                 objetoConexion.cerrarConexion();
             }
             catch
             {
-                MessageBox.Show("No se puedo registrar la informacion");
+                MessageBox.Show("No se puedo registrar la información");
             }
         }
 
@@ -45,7 +45,7 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
                 objetoConexion.cerrarConexion();
             }
             catch {
-                MessageBox.Show("No se puedo Actualizo la informacion");
+                MessageBox.Show("No se puedo Actualizo la información");
             }
         }
 
@@ -58,7 +58,7 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
 
                 NpgsqlCommand comando = new NpgsqlCommand(sqlUpdate, objetoConexion.establecerConexion());
                 NpgsqlDataReader reader = comando.ExecuteReader();
-                MessageBox.Show("Se Actualizo la informacion");
+                MessageBox.Show("Se Actualizo la información");
                 while (reader.Read())
                 {
 
@@ -67,7 +67,7 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
             }
             catch
             {
-                MessageBox.Show("No se puedo Actualizo la informacion");
+                MessageBox.Show("No se puedo Actualizar la información");
             }
         }
         private string ElejirCuantoValoresCambiar(double precio, double costo, string referencia)
