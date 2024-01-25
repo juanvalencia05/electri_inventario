@@ -44,7 +44,6 @@
             this.nombre = new System.Windows.Forms.TextBox();
             this.referencia = new System.Windows.Forms.TextBox();
             this.listaRepuestos = new System.Windows.Forms.DataGridView();
-            this.label9 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.panelBusqueda = new System.Windows.Forms.Panel();
@@ -156,7 +155,7 @@
             // marca
             // 
             this.marca.Location = new System.Drawing.Point(62, 171);
-            this.marca.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.marca.Margin = new System.Windows.Forms.Padding(2);
             this.marca.Name = "marca";
             this.marca.Size = new System.Drawing.Size(391, 23);
             this.marca.TabIndex = 9;
@@ -245,7 +244,7 @@
             // 
             this.listaRepuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaRepuestos.Location = new System.Drawing.Point(5, 16);
-            this.listaRepuestos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listaRepuestos.Margin = new System.Windows.Forms.Padding(2);
             this.listaRepuestos.Name = "listaRepuestos";
             this.listaRepuestos.RowHeadersWidth = 62;
             this.listaRepuestos.RowTemplate.Height = 28;
@@ -253,22 +252,11 @@
             this.listaRepuestos.TabIndex = 0;
             this.listaRepuestos.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.listaRepuestos_CellMouseClick);
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Times New Roman", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(18, 0);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(146, 28);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "ElectriPareja";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 408);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -289,7 +277,7 @@
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(2);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(223, 487);
             this.panelMenu.TabIndex = 3;
@@ -300,7 +288,7 @@
             this.panelBusqueda.Controls.Add(this.buscarReferenciaMenu);
             this.panelBusqueda.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBusqueda.Location = new System.Drawing.Point(0, 326);
-            this.panelBusqueda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelBusqueda.Margin = new System.Windows.Forms.Padding(2);
             this.panelBusqueda.Name = "panelBusqueda";
             this.panelBusqueda.Size = new System.Drawing.Size(223, 80);
             this.panelBusqueda.TabIndex = 7;
@@ -311,7 +299,7 @@
             this.bucarNombreMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bucarNombreMenu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bucarNombreMenu.Location = new System.Drawing.Point(0, 38);
-            this.bucarNombreMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bucarNombreMenu.Margin = new System.Windows.Forms.Padding(2);
             this.bucarNombreMenu.Name = "bucarNombreMenu";
             this.bucarNombreMenu.Padding = new System.Windows.Forms.Padding(33, 0, 0, 0);
             this.bucarNombreMenu.Size = new System.Drawing.Size(221, 40);
@@ -327,7 +315,7 @@
             this.buscarReferenciaMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buscarReferenciaMenu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buscarReferenciaMenu.Location = new System.Drawing.Point(0, 1);
-            this.buscarReferenciaMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buscarReferenciaMenu.Margin = new System.Windows.Forms.Padding(2);
             this.buscarReferenciaMenu.Name = "buscarReferenciaMenu";
             this.buscarReferenciaMenu.Padding = new System.Windows.Forms.Padding(33, 0, 0, 0);
             this.buscarReferenciaMenu.Size = new System.Drawing.Size(213, 31);
@@ -344,7 +332,7 @@
             this.buscarMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buscarMenu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buscarMenu.Location = new System.Drawing.Point(0, 290);
-            this.buscarMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buscarMenu.Margin = new System.Windows.Forms.Padding(2);
             this.buscarMenu.Name = "buscarMenu";
             this.buscarMenu.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
             this.buscarMenu.Size = new System.Drawing.Size(223, 36);
@@ -361,7 +349,7 @@
             this.actualizarMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.actualizarMenu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.actualizarMenu.Location = new System.Drawing.Point(0, 248);
-            this.actualizarMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.actualizarMenu.Margin = new System.Windows.Forms.Padding(2);
             this.actualizarMenu.Name = "actualizarMenu";
             this.actualizarMenu.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
             this.actualizarMenu.Size = new System.Drawing.Size(223, 42);
@@ -378,7 +366,7 @@
             this.ventaMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ventaMenu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ventaMenu.Location = new System.Drawing.Point(0, 200);
-            this.ventaMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ventaMenu.Margin = new System.Windows.Forms.Padding(2);
             this.ventaMenu.Name = "ventaMenu";
             this.ventaMenu.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
             this.ventaMenu.Size = new System.Drawing.Size(223, 48);
@@ -395,7 +383,7 @@
             this.listaProductosMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.listaProductosMenu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listaProductosMenu.Location = new System.Drawing.Point(0, 152);
-            this.listaProductosMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listaProductosMenu.Margin = new System.Windows.Forms.Padding(2);
             this.listaProductosMenu.Name = "listaProductosMenu";
             this.listaProductosMenu.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
             this.listaProductosMenu.Size = new System.Drawing.Size(223, 48);
@@ -413,7 +401,7 @@
             this.registrarMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.registrarMenu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.registrarMenu.Location = new System.Drawing.Point(0, 116);
-            this.registrarMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.registrarMenu.Margin = new System.Windows.Forms.Padding(2);
             this.registrarMenu.Name = "registrarMenu";
             this.registrarMenu.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
             this.registrarMenu.Size = new System.Drawing.Size(223, 36);
@@ -426,10 +414,9 @@
             // panelLogo
             // 
             this.panelLogo.Controls.Add(this.pictureBox2);
-            this.panelLogo.Controls.Add(this.label9);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelLogo.Margin = new System.Windows.Forms.Padding(2);
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(223, 116);
             this.panelLogo.TabIndex = 4;
@@ -437,10 +424,10 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(33, 32);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(26, 8);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(129, 79);
+            this.pictureBox2.Size = new System.Drawing.Size(155, 103);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
@@ -456,9 +443,9 @@
             this.groupBoxActualizar.Controls.Add(this.costoModificar);
             this.groupBoxActualizar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxActualizar.Location = new System.Drawing.Point(234, 8);
-            this.groupBoxActualizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxActualizar.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxActualizar.Name = "groupBoxActualizar";
-            this.groupBoxActualizar.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxActualizar.Padding = new System.Windows.Forms.Padding(2);
             this.groupBoxActualizar.Size = new System.Drawing.Size(560, 467);
             this.groupBoxActualizar.TabIndex = 0;
             this.groupBoxActualizar.TabStop = false;
@@ -466,7 +453,7 @@
             // modificarValorBT
             // 
             this.modificarValorBT.Location = new System.Drawing.Point(214, 311);
-            this.modificarValorBT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.modificarValorBT.Margin = new System.Windows.Forms.Padding(2);
             this.modificarValorBT.Name = "modificarValorBT";
             this.modificarValorBT.Size = new System.Drawing.Size(152, 39);
             this.modificarValorBT.TabIndex = 6;
@@ -487,7 +474,7 @@
             // referenciaModificarPrecio
             // 
             this.referenciaModificarPrecio.Location = new System.Drawing.Point(112, 161);
-            this.referenciaModificarPrecio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.referenciaModificarPrecio.Margin = new System.Windows.Forms.Padding(2);
             this.referenciaModificarPrecio.Name = "referenciaModificarPrecio";
             this.referenciaModificarPrecio.Size = new System.Drawing.Size(379, 26);
             this.referenciaModificarPrecio.TabIndex = 4;
@@ -498,9 +485,9 @@
             this.label13.Location = new System.Drawing.Point(110, 214);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(103, 19);
+            this.label13.Size = new System.Drawing.Size(48, 19);
             this.label13.TabIndex = 3;
-            this.label13.Text = "Precio de venta";
+            this.label13.Text = "Precio";
             // 
             // label12
             // 
@@ -515,7 +502,7 @@
             // precioModificar
             // 
             this.precioModificar.Location = new System.Drawing.Point(54, 244);
-            this.precioModificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.precioModificar.Margin = new System.Windows.Forms.Padding(2);
             this.precioModificar.Name = "precioModificar";
             this.precioModificar.Size = new System.Drawing.Size(207, 26);
             this.precioModificar.TabIndex = 1;
@@ -524,7 +511,7 @@
             // costoModificar
             // 
             this.costoModificar.Location = new System.Drawing.Point(308, 244);
-            this.costoModificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.costoModificar.Margin = new System.Windows.Forms.Padding(2);
             this.costoModificar.Name = "costoModificar";
             this.costoModificar.Size = new System.Drawing.Size(207, 26);
             this.costoModificar.TabIndex = 0;
@@ -538,9 +525,9 @@
             this.groupBoxBuscarNombre.Controls.Add(this.tablaBusquedaNombre);
             this.groupBoxBuscarNombre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxBuscarNombre.Location = new System.Drawing.Point(243, 7);
-            this.groupBoxBuscarNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxBuscarNombre.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxBuscarNombre.Name = "groupBoxBuscarNombre";
-            this.groupBoxBuscarNombre.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxBuscarNombre.Padding = new System.Windows.Forms.Padding(2);
             this.groupBoxBuscarNombre.Size = new System.Drawing.Size(553, 468);
             this.groupBoxBuscarNombre.TabIndex = 0;
             this.groupBoxBuscarNombre.TabStop = false;
@@ -548,7 +535,7 @@
             // buscarNombreBT
             // 
             this.buscarNombreBT.Location = new System.Drawing.Point(253, 139);
-            this.buscarNombreBT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buscarNombreBT.Margin = new System.Windows.Forms.Padding(2);
             this.buscarNombreBT.Name = "buscarNombreBT";
             this.buscarNombreBT.Size = new System.Drawing.Size(100, 34);
             this.buscarNombreBT.TabIndex = 7;
@@ -569,7 +556,7 @@
             // nombreBuscar
             // 
             this.nombreBuscar.Location = new System.Drawing.Point(123, 105);
-            this.nombreBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nombreBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.nombreBuscar.Name = "nombreBuscar";
             this.nombreBuscar.Size = new System.Drawing.Size(341, 26);
             this.nombreBuscar.TabIndex = 5;
@@ -578,7 +565,7 @@
             // 
             this.tablaBusquedaNombre.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaBusquedaNombre.Location = new System.Drawing.Point(11, 214);
-            this.tablaBusquedaNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tablaBusquedaNombre.Margin = new System.Windows.Forms.Padding(2);
             this.tablaBusquedaNombre.Name = "tablaBusquedaNombre";
             this.tablaBusquedaNombre.RowHeadersWidth = 62;
             this.tablaBusquedaNombre.RowTemplate.Height = 28;
@@ -593,9 +580,9 @@
             this.groupBoxBuscarReferencia.Controls.Add(this.tablaBusquedaReferencia);
             this.groupBoxBuscarReferencia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxBuscarReferencia.Location = new System.Drawing.Point(239, 7);
-            this.groupBoxBuscarReferencia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxBuscarReferencia.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxBuscarReferencia.Name = "groupBoxBuscarReferencia";
-            this.groupBoxBuscarReferencia.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxBuscarReferencia.Padding = new System.Windows.Forms.Padding(2);
             this.groupBoxBuscarReferencia.Size = new System.Drawing.Size(557, 467);
             this.groupBoxBuscarReferencia.TabIndex = 0;
             this.groupBoxBuscarReferencia.TabStop = false;
@@ -603,7 +590,7 @@
             // buscarReferenciaBT
             // 
             this.buscarReferenciaBT.Location = new System.Drawing.Point(246, 177);
-            this.buscarReferenciaBT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buscarReferenciaBT.Margin = new System.Windows.Forms.Padding(2);
             this.buscarReferenciaBT.Name = "buscarReferenciaBT";
             this.buscarReferenciaBT.Size = new System.Drawing.Size(99, 34);
             this.buscarReferenciaBT.TabIndex = 3;
@@ -624,7 +611,7 @@
             // busquedaReferenciaText
             // 
             this.busquedaReferenciaText.Location = new System.Drawing.Point(119, 132);
-            this.busquedaReferenciaText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.busquedaReferenciaText.Margin = new System.Windows.Forms.Padding(2);
             this.busquedaReferenciaText.Name = "busquedaReferenciaText";
             this.busquedaReferenciaText.Size = new System.Drawing.Size(379, 26);
             this.busquedaReferenciaText.TabIndex = 1;
@@ -633,7 +620,7 @@
             // 
             this.tablaBusquedaReferencia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaBusquedaReferencia.Location = new System.Drawing.Point(6, 298);
-            this.tablaBusquedaReferencia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tablaBusquedaReferencia.Margin = new System.Windows.Forms.Padding(2);
             this.tablaBusquedaReferencia.Name = "tablaBusquedaReferencia";
             this.tablaBusquedaReferencia.RowHeadersWidth = 62;
             this.tablaBusquedaReferencia.RowTemplate.Height = 28;
@@ -652,9 +639,9 @@
             this.groupBoxVenta.Controls.Add(this.ventaCheck);
             this.groupBoxVenta.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxVenta.Location = new System.Drawing.Point(241, 7);
-            this.groupBoxVenta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxVenta.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxVenta.Name = "groupBoxVenta";
-            this.groupBoxVenta.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxVenta.Padding = new System.Windows.Forms.Padding(2);
             this.groupBoxVenta.Size = new System.Drawing.Size(555, 468);
             this.groupBoxVenta.TabIndex = 0;
             this.groupBoxVenta.TabStop = false;
@@ -663,7 +650,7 @@
             // 
             this.tablaRetiro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaRetiro.Location = new System.Drawing.Point(16, 301);
-            this.tablaRetiro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tablaRetiro.Margin = new System.Windows.Forms.Padding(2);
             this.tablaRetiro.Name = "tablaRetiro";
             this.tablaRetiro.RowHeadersWidth = 62;
             this.tablaRetiro.RowTemplate.Height = 28;
@@ -683,7 +670,7 @@
             // cantidadModificar
             // 
             this.cantidadModificar.Location = new System.Drawing.Point(95, 209);
-            this.cantidadModificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cantidadModificar.Margin = new System.Windows.Forms.Padding(2);
             this.cantidadModificar.Name = "cantidadModificar";
             this.cantidadModificar.Size = new System.Drawing.Size(371, 24);
             this.cantidadModificar.TabIndex = 6;
@@ -701,7 +688,7 @@
             // referenciaModificar
             // 
             this.referenciaModificar.Location = new System.Drawing.Point(95, 154);
-            this.referenciaModificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.referenciaModificar.Margin = new System.Windows.Forms.Padding(2);
             this.referenciaModificar.Name = "referenciaModificar";
             this.referenciaModificar.Size = new System.Drawing.Size(371, 24);
             this.referenciaModificar.TabIndex = 4;
@@ -709,7 +696,7 @@
             // retiroIngreso
             // 
             this.retiroIngreso.Location = new System.Drawing.Point(225, 243);
-            this.retiroIngreso.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.retiroIngreso.Margin = new System.Windows.Forms.Padding(2);
             this.retiroIngreso.Name = "retiroIngreso";
             this.retiroIngreso.Size = new System.Drawing.Size(114, 43);
             this.retiroIngreso.TabIndex = 2;
@@ -722,7 +709,7 @@
             this.ingresoCheck.AutoSize = true;
             this.ingresoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ingresoCheck.Location = new System.Drawing.Point(310, 65);
-            this.ingresoCheck.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ingresoCheck.Margin = new System.Windows.Forms.Padding(2);
             this.ingresoCheck.Name = "ingresoCheck";
             this.ingresoCheck.Size = new System.Drawing.Size(103, 30);
             this.ingresoCheck.TabIndex = 1;
@@ -735,7 +722,7 @@
             this.ventaCheck.AutoSize = true;
             this.ventaCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ventaCheck.Location = new System.Drawing.Point(156, 65);
-            this.ventaCheck.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ventaCheck.Margin = new System.Windows.Forms.Padding(2);
             this.ventaCheck.Name = "ventaCheck";
             this.ventaCheck.Size = new System.Drawing.Size(88, 30);
             this.ventaCheck.TabIndex = 0;
@@ -747,9 +734,9 @@
             // 
             this.groupBoxLista.Controls.Add(this.listaRepuestos);
             this.groupBoxLista.Location = new System.Drawing.Point(249, 8);
-            this.groupBoxLista.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxLista.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxLista.Name = "groupBoxLista";
-            this.groupBoxLista.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxLista.Padding = new System.Windows.Forms.Padding(2);
             this.groupBoxLista.Size = new System.Drawing.Size(547, 466);
             this.groupBoxLista.TabIndex = 4;
             this.groupBoxLista.TabStop = false;
@@ -767,6 +754,7 @@
             this.Controls.Add(this.groupBoxLista);
             this.Controls.Add(this.panelMenu);
             this.ForeColor = System.Drawing.Color.Black;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormInventario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventario";
@@ -778,7 +766,6 @@
             this.panelMenu.PerformLayout();
             this.panelBusqueda.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
-            this.panelLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBoxActualizar.ResumeLayout(false);
             this.groupBoxActualizar.PerformLayout();
@@ -812,7 +799,6 @@
         private System.Windows.Forms.TextBox costo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox marca;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelLogo;
