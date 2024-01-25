@@ -459,13 +459,13 @@
             this.groupBoxActualizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBoxActualizar.Name = "groupBoxActualizar";
             this.groupBoxActualizar.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBoxActualizar.Size = new System.Drawing.Size(507, 467);
+            this.groupBoxActualizar.Size = new System.Drawing.Size(560, 467);
             this.groupBoxActualizar.TabIndex = 0;
             this.groupBoxActualizar.TabStop = false;
             // 
             // modificarValorBT
             // 
-            this.modificarValorBT.Location = new System.Drawing.Point(185, 311);
+            this.modificarValorBT.Location = new System.Drawing.Point(214, 311);
             this.modificarValorBT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.modificarValorBT.Name = "modificarValorBT";
             this.modificarValorBT.Size = new System.Drawing.Size(152, 39);
@@ -477,7 +477,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(128, 125);
+            this.label14.Location = new System.Drawing.Point(157, 125);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(274, 19);
@@ -486,7 +486,7 @@
             // 
             // referenciaModificarPrecio
             // 
-            this.referenciaModificarPrecio.Location = new System.Drawing.Point(83, 161);
+            this.referenciaModificarPrecio.Location = new System.Drawing.Point(112, 161);
             this.referenciaModificarPrecio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.referenciaModificarPrecio.Name = "referenciaModificarPrecio";
             this.referenciaModificarPrecio.Size = new System.Drawing.Size(379, 26);
@@ -495,7 +495,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(81, 214);
+            this.label13.Location = new System.Drawing.Point(110, 214);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(103, 19);
@@ -505,7 +505,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(362, 214);
+            this.label12.Location = new System.Drawing.Point(391, 214);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(46, 19);
@@ -514,7 +514,7 @@
             // 
             // precioModificar
             // 
-            this.precioModificar.Location = new System.Drawing.Point(25, 244);
+            this.precioModificar.Location = new System.Drawing.Point(54, 244);
             this.precioModificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.precioModificar.Name = "precioModificar";
             this.precioModificar.Size = new System.Drawing.Size(207, 26);
@@ -523,7 +523,7 @@
             // 
             // costoModificar
             // 
-            this.costoModificar.Location = new System.Drawing.Point(279, 244);
+            this.costoModificar.Location = new System.Drawing.Point(308, 244);
             this.costoModificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.costoModificar.Name = "costoModificar";
             this.costoModificar.Size = new System.Drawing.Size(207, 26);
@@ -541,13 +541,13 @@
             this.groupBoxBuscarNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBoxBuscarNombre.Name = "groupBoxBuscarNombre";
             this.groupBoxBuscarNombre.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBoxBuscarNombre.Size = new System.Drawing.Size(506, 468);
+            this.groupBoxBuscarNombre.Size = new System.Drawing.Size(553, 468);
             this.groupBoxBuscarNombre.TabIndex = 0;
             this.groupBoxBuscarNombre.TabStop = false;
             // 
             // buscarNombreBT
             // 
-            this.buscarNombreBT.Location = new System.Drawing.Point(199, 137);
+            this.buscarNombreBT.Location = new System.Drawing.Point(253, 139);
             this.buscarNombreBT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buscarNombreBT.Name = "buscarNombreBT";
             this.buscarNombreBT.Size = new System.Drawing.Size(100, 34);
@@ -559,7 +559,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(95, 67);
+            this.label11.Location = new System.Drawing.Point(149, 69);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(298, 19);
@@ -568,7 +568,7 @@
             // 
             // nombreBuscar
             // 
-            this.nombreBuscar.Location = new System.Drawing.Point(69, 103);
+            this.nombreBuscar.Location = new System.Drawing.Point(123, 105);
             this.nombreBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nombreBuscar.Name = "nombreBuscar";
             this.nombreBuscar.Size = new System.Drawing.Size(341, 26);
@@ -582,7 +582,7 @@
             this.tablaBusquedaNombre.Name = "tablaBusquedaNombre";
             this.tablaBusquedaNombre.RowHeadersWidth = 62;
             this.tablaBusquedaNombre.RowTemplate.Height = 28;
-            this.tablaBusquedaNombre.Size = new System.Drawing.Size(487, 237);
+            this.tablaBusquedaNombre.Size = new System.Drawing.Size(525, 237);
             this.tablaBusquedaNombre.TabIndex = 4;
             // 
             // groupBoxBuscarReferencia
@@ -596,13 +596,13 @@
             this.groupBoxBuscarReferencia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBoxBuscarReferencia.Name = "groupBoxBuscarReferencia";
             this.groupBoxBuscarReferencia.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBoxBuscarReferencia.Size = new System.Drawing.Size(522, 467);
+            this.groupBoxBuscarReferencia.Size = new System.Drawing.Size(557, 467);
             this.groupBoxBuscarReferencia.TabIndex = 0;
             this.groupBoxBuscarReferencia.TabStop = false;
             // 
             // buscarReferenciaBT
             // 
-            this.buscarReferenciaBT.Location = new System.Drawing.Point(201, 155);
+            this.buscarReferenciaBT.Location = new System.Drawing.Point(246, 177);
             this.buscarReferenciaBT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buscarReferenciaBT.Name = "buscarReferenciaBT";
             this.buscarReferenciaBT.Size = new System.Drawing.Size(99, 34);
@@ -614,16 +614,16 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(99, 84);
+            this.label10.Location = new System.Drawing.Point(152, 97);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(296, 19);
+            this.label10.Size = new System.Drawing.Size(311, 19);
             this.label10.TabIndex = 2;
-            this.label10.Text = "Digite la referencia del procto que desea buscar";
+            this.label10.Text = "Digite la referencia del producto que desea buscar";
             // 
             // busquedaReferenciaText
             // 
-            this.busquedaReferenciaText.Location = new System.Drawing.Point(60, 112);
+            this.busquedaReferenciaText.Location = new System.Drawing.Point(119, 132);
             this.busquedaReferenciaText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.busquedaReferenciaText.Name = "busquedaReferenciaText";
             this.busquedaReferenciaText.Size = new System.Drawing.Size(379, 26);
@@ -637,7 +637,7 @@
             this.tablaBusquedaReferencia.Name = "tablaBusquedaReferencia";
             this.tablaBusquedaReferencia.RowHeadersWidth = 62;
             this.tablaBusquedaReferencia.RowTemplate.Height = 28;
-            this.tablaBusquedaReferencia.Size = new System.Drawing.Size(500, 134);
+            this.tablaBusquedaReferencia.Size = new System.Drawing.Size(534, 134);
             this.tablaBusquedaReferencia.TabIndex = 0;
             // 
             // groupBoxVenta
@@ -655,7 +655,7 @@
             this.groupBoxVenta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBoxVenta.Name = "groupBoxVenta";
             this.groupBoxVenta.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBoxVenta.Size = new System.Drawing.Size(531, 468);
+            this.groupBoxVenta.Size = new System.Drawing.Size(555, 468);
             this.groupBoxVenta.TabIndex = 0;
             this.groupBoxVenta.TabStop = false;
             // 
@@ -667,7 +667,7 @@
             this.tablaRetiro.Name = "tablaRetiro";
             this.tablaRetiro.RowHeadersWidth = 62;
             this.tablaRetiro.RowTemplate.Height = 28;
-            this.tablaRetiro.Size = new System.Drawing.Size(505, 123);
+            this.tablaRetiro.Size = new System.Drawing.Size(522, 123);
             this.tablaRetiro.TabIndex = 8;
             // 
             // label6
@@ -696,7 +696,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(197, 17);
             this.label5.TabIndex = 5;
-            this.label5.Text = "Digite el referencia del producto";
+            this.label5.Text = "Digite la referencia del producto";
             // 
             // referenciaModificar
             // 
@@ -750,7 +750,7 @@
             this.groupBoxLista.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBoxLista.Name = "groupBoxLista";
             this.groupBoxLista.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBoxLista.Size = new System.Drawing.Size(534, 466);
+            this.groupBoxLista.Size = new System.Drawing.Size(547, 466);
             this.groupBoxLista.TabIndex = 4;
             this.groupBoxLista.TabStop = false;
             // 
@@ -759,12 +759,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 487);
-            this.Controls.Add(this.groupBoxRegistro);
-            this.Controls.Add(this.groupBoxLista);
             this.Controls.Add(this.groupBoxActualizar);
-            this.Controls.Add(this.groupBoxBuscarNombre);
             this.Controls.Add(this.groupBoxBuscarReferencia);
             this.Controls.Add(this.groupBoxVenta);
+            this.Controls.Add(this.groupBoxBuscarNombre);
+            this.Controls.Add(this.groupBoxRegistro);
+            this.Controls.Add(this.groupBoxLista);
             this.Controls.Add(this.panelMenu);
             this.ForeColor = System.Drawing.Color.Black;
             this.Name = "FormInventario";

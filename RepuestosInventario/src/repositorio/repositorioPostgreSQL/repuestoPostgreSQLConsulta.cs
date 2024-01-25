@@ -47,7 +47,7 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
             {
                 PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
 
-                string sqlConsulta = "select * from repuesto";
+                string sqlConsulta = "select *from repuesto";
 
                 tablaRespuestos.DataSource = null;
                 NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(sqlConsulta, objetoConexion.establecerConexion());
@@ -64,7 +64,7 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
             }
             catch
             {
-                MessageBox.Show("No se puedo mostrar la informacion");
+                MessageBox.Show("No se puedo mostrar la información");
             }
         }
 
@@ -89,7 +89,7 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
             }
             catch
             {
-                MessageBox.Show("No se puedo mostrar la informacion");
+                MessageBox.Show("No se puedo mostrar la información");
             }
         }
 
@@ -125,7 +125,7 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
                 PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
                 repuesto repuesto;
 
-                string sqlConsulta = "select * from repuesto WHERE referencia='" + referencia + "';";
+                string sqlConsulta = "select *from repuesto WHERE referencia='" + referencia + "';";
 
                 NpgsqlCommand comando = new NpgsqlCommand(sqlConsulta, objetoConexion.establecerConexion());
                 NpgsqlDataReader reader = comando.ExecuteReader();
@@ -138,7 +138,7 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
                 }
                 else
                 {
-                    MessageBox.Show("No se trajo la informacion");
+                    MessageBox.Show("No se trajo la información");
                     repuesto = null;
                 }                                          
                 objetoConexion.cerrarConexion();
@@ -147,7 +147,7 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
             }
             catch
             {
-                MessageBox.Show("No se puedo mostrar la informacion");
+                MessageBox.Show("No se puedo mostrar la información");
                 return null;
             }
         }
@@ -158,7 +158,7 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
                 referencia.Text = tablaRespuestos.CurrentRow.Cells[1].Value.ToString();
             }
             catch {
-                MessageBox.Show("No se puedo seleccionar la informacion");
+                MessageBox.Show("No se puedo seleccionar la información");
             }
         }
     }
