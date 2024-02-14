@@ -171,9 +171,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Image1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\electripareja.ico" />
   </ItemGroup>
   <ItemGroup>

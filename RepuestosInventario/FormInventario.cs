@@ -61,18 +61,23 @@ namespace RepuestosInventario
         }
         private void guardar_Click_1(object sender, EventArgs e)
         {
-            formatoMoneda(precio);
-            repuesto repuesto = repuesto.build(referencia.Text,nombre.Text, marca.Text, short.Parse(cantidad.Text), double.Parse(precio.Text), double.Parse(costo.Text));
-            referencia.Text = "";
-            nombre.Text = "";
-            marca.Text = "";
-            cantidad.Text = "";
-            precio.Text = "";
-            costo.Text = "";
-            repuestoPostgreSQLConsulta repuestosConsulta = new repuestoPostgreSQLConsulta();
-            repuestoPosgreSQLComando repuestosComando = new repuestoPosgreSQLComando();
-            repuestosComando.guardarRepuesto(repuesto);
-            repuestosConsulta.mostrarRepuestos(listaRepuestos);
+            try
+            {
+                formatoMoneda(precio);
+                formatoMoneda(costo);
+                repuesto repuesto = repuesto.build(referencia.Text, nombre.Text, marca.Text, short.Parse(cantidad.Text), double.Parse(precio.Text), double.Parse(costo.Text));
+                if(referencia.Text != "" && nombre.Text != "" && marca.Text != "" &&
+                    cantidad.Text != "" && precio.Text != "" && costo.Text != "")
+                {
+                    referencia.Text = nombre.Text = marca.Text = cantidad.Text = precio.Text = costo.Text = "";
+                }
+                repuestoPostgreSQLConsulta repuestosConsulta = new repuestoPostgreSQLConsulta();
+                repuestoPosgreSQLComando repuestosComando = new repuestoPosgreSQLComando();
+            } catch (Exception)
+            {
+                MessageBox.Show("Por favor diligencie todos los campos del formulario");
+            }
+
         }
 
         private void listaRepuestos_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)

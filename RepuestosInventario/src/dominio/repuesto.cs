@@ -21,7 +21,7 @@ namespace RepuestosInventario.src.dominio
         {
             this.referencia = ValidarCampoVacio(referencia, "No se digito la referencia ");
             this.nombre = ValidarCampoVacio(nombre, "No se digito el nombre ");
-            this.marca = ValidarCampoVacio(marca, "No se digita la marca ");
+            this.marca = ValidarCampoVacio(marca, "No se digito la marca ");
             this.cantidad = ((short)ValidarCampoNumerico(Convert.ToInt32(cantidad), "La cantidad no puede ser menor a 0 "));
             this.precio = ValidarCampoNumerico(precio, "El precio no puede ser menor a 0 ");
             this.costo = ValidarCampoNumerico(costo, "El costo no puede ser menor a 0 ");
@@ -29,22 +29,44 @@ namespace RepuestosInventario.src.dominio
 
         private string ValidarCampoVacio(string valor, string mensaje)
         {
-            if (valor.Equals("")) {
-                MessageBox.Show(mensaje);
-                throw new Exception(mensaje);
+            try
+            {
+                if (valor.Equals(""))
+                {
+                    MessageBox.Show(mensaje);
+                    return null;
+
+                }
+                else
+                {
+                    return valor;
+                }
             }
-            else {
-                return valor;
+            catch (Exception)
+            {
+                MessageBox.Show(mensaje);
+                return null;
+
             }
         }
         private double ValidarCampoNumerico(double valor, string mensaje)
         {
-            if (valor < 0) {
-                MessageBox.Show(mensaje);
-                throw new Exception(mensaje);
+            try
+            {
+                if (valor < 0)
+                {
+                    throw new Exception(mensaje);
+                }
+                else
+                {
+                    return valor;
+                }
             }
-            else {
-                return valor;
+            catch (Exception)
+            {
+                MessageBox.Show(mensaje);
+                return 0;
+                
             }
         }
         public string Referencia
