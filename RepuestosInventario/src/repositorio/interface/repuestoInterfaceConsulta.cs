@@ -11,6 +11,8 @@ namespace RepuestosInventario.src.repositorio
 
         void mostrarRepuestosPorNombre(DataGridView tablaRespuestos, string nombre);
 
+        void mostrarRepuestosPorMarca(DataGridView tablaRespuestos, string marca);
+
         void seleccionarRepuesto(DataGridView tablaRespuestos, TextBox referencia);
 
         log inicioSesion(string usuario, string contrasena);

@@ -26,6 +26,7 @@ namespace RepuestosInventario
             groupBoxBuscarReferencia.Visible = false;
             groupBoxBuscarNombre.Visible = false;
             groupBoxActualizar.Visible = false;
+            groupBusquedaMarca.Visible = false;
         }
         private void ocultarGroup()
         {
@@ -41,6 +42,8 @@ namespace RepuestosInventario
                 groupBoxBuscarNombre.Visible = false;
             if (groupBoxActualizar.Visible == true)
                 groupBoxActualizar.Visible = false;
+            if (groupBusquedaMarca.Visible == true)
+                groupBusquedaMarca.Visible = false;
         }
         private void ocultarSubMenu()
         {
@@ -134,6 +137,11 @@ namespace RepuestosInventario
         private void buscarNombreBT_Click(object sender, EventArgs e)
         {
             this.repuestosConsulta.mostrarRepuestosPorNombre(tablaBusquedaNombre, nombreBuscar.Text);
+        }
+
+        private void BusquedaMarcaBT_Click(object sender, EventArgs e)
+        {
+            this.repuestosConsulta.mostrarRepuestosPorMarca(tablaBusquedaMarca, busquedaMarcaText.Text);
         }
 
         private void retiroIngresoCantidad(string referencia , short cantidad)
@@ -232,6 +240,14 @@ namespace RepuestosInventario
             groupBoxBuscarNombre.Visible = true;
 
         }
+
+        private void buscarMarcaMenu_Click(object sender, EventArgs e)
+        {
+            ocultarGroup();
+            busquedaMarcaText.Text = "";
+            groupBusquedaMarca.Visible = true;
+        }
+
         private void actualizarMenu_Click(object sender, EventArgs e)
         {
             ocultarSubMenu();
@@ -245,5 +261,12 @@ namespace RepuestosInventario
         {
 
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
     }
 }

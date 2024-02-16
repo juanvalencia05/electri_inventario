@@ -117,6 +117,30 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
                 MessageBox.Show("No se puedo mostrar la Referencia");
             }
         }
+        public void mostrarRepuestosPorMarca(DataGridView tablaRespuestos, string marca)
+        {
+            try
+            {
+                PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
+                string sqlConsulta = "select * from repuesto WHERE marca LIKE '%" + marca + "%';";
+                tablaRespuestos.DataSource = null;
+
+                NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(sqlConsulta, objetoConexion.establecerConexion());
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                tablaRespuestos.DataSource = dataTable;
+
+                edicion.asignarTituloColumnasDimencion(tablaRespuestos);
+                edicion.aplicarFormatoNumerico(tablaRespuestos);
+                edicion.columnasSoloLectura(tablaRespuestos);
+
+                objetoConexion.cerrarConexion();
+            }
+            catch
+            {
+                MessageBox.Show("No se puedo mostrar el producot por esa marca");
+            }
+        }
 
         public repuesto mostrarRepuestosPorReferenciaParaModificar(string referencia)
         {
