@@ -1,11 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\RepuestosInventario",
-    "\\RepuestosInventario\\bin",
-    "\\RepuestosInventario\\Properties",
-    "\\RepuestosInventario\\src\\repositorio",
-    "\\RepuestosInventario\\src\\repositorio\\repositorioPostgreSQL"
+    ""
   ],
   "SelectedNode": "\\RepuestosInventario.sln",
   "PreviewInSolutionExplorer": false

@@ -20,7 +20,7 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
                 NpgsqlCommand comando = new NpgsqlCommand(sqlInsertar, objetoConexion.establecerConexion());
  
                 NpgsqlDataReader reader = comando.ExecuteReader();
-                MessageBox.Show("Se puedo guardo la información");
+                MessageBox.Show("Se puedo guardar la información");
                 while (reader.Read()) { }
                 objetoConexion.cerrarConexion();
             }

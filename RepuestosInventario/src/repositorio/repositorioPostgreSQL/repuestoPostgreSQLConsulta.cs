@@ -98,7 +98,7 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
             try
             {
                 PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
-                string sqlConsulta = "select * from repuesto WHERE referencia='" + referencia + "';";
+                string sqlConsulta = "select * from repuesto WHERE referencia LIKE '%" + referencia + "%';";
                 tablaRespuestos.DataSource = null;
 
                 NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(sqlConsulta, objetoConexion.establecerConexion());
@@ -125,7 +125,7 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
                 PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
                 repuesto repuesto;
 
-                string sqlConsulta = "select *from repuesto WHERE referencia='" + referencia + "';";
+                string sqlConsulta = "select *from repuesto WHERE referencia like'%" + referencia + "%';";
 
                 NpgsqlCommand comando = new NpgsqlCommand(sqlConsulta, objetoConexion.establecerConexion());
                 NpgsqlDataReader reader = comando.ExecuteReader();

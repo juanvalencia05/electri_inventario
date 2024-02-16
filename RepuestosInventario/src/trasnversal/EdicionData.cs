@@ -28,10 +28,6 @@ namespace RepuestosInventario.src.trasnversal
 
         public void asignarTituloColumnasDimencion(DataGridView tablaRespuestos)
         {
-            tablaRespuestos.Columns["cantidad"].Width = 70;
-            tablaRespuestos.Columns["precio"].Width = 75;
-            tablaRespuestos.Columns["costo"].Width = 75;
-
             tablaRespuestos.Columns["referencia"].HeaderText = "Referencia";
             tablaRespuestos.Columns["nombre"].HeaderText = "Nombre";
             tablaRespuestos.Columns["marca"].HeaderText = "Marca";
