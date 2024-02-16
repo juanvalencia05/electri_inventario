@@ -8,6 +8,9 @@ namespace RepuestosInventario
 {
     public partial class FormInventario : Form
     {
+        private repuestoPostgreSQLConsulta repuestosConsulta = new repuestoPostgreSQLConsulta();
+        private repuestoPosgreSQLComando repuestosComando = new repuestoPosgreSQLComando();
+
         public FormInventario()
         {
             InitializeComponent();
@@ -71,8 +74,8 @@ namespace RepuestosInventario
                 {
                     referencia.Text = nombre.Text = marca.Text = cantidad.Text = precio.Text = costo.Text = "";
                 }
-                repuestoPostgreSQLConsulta repuestosConsulta = new repuestoPostgreSQLConsulta();
-                repuestoPosgreSQLComando repuestosComando = new repuestoPosgreSQLComando();
+                this.repuestosComando.guardarRepuesto(repuesto);
+                this.repuestosConsulta.mostrarRepuestos(listaRepuestos);
             } catch (Exception)
             {
                 MessageBox.Show("Por favor diligencie todos los campos del formulario");
@@ -82,8 +85,7 @@ namespace RepuestosInventario
 
         private void listaRepuestos_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            repuestoPostgreSQLConsulta repuestos = new repuestoPostgreSQLConsulta();
-            repuestos.seleccionarRepuesto(listaRepuestos, referenciaModificar);
+            this.repuestosConsulta.seleccionarRepuesto(listaRepuestos, referenciaModificar);
         }
 
         private void retiroIngreso_Click(object sender, EventArgs e)
@@ -92,8 +94,7 @@ namespace RepuestosInventario
 
             if (referenciaModificar.Text != "" && cantidadModificar.Text != "")
             {
-                repuestoPostgreSQLConsulta repuestosConsulta = new repuestoPostgreSQLConsulta();
-                repuesto repuesto = repuestosConsulta.mostrarRepuestosPorReferenciaParaModificar(referenciaModificar.Text);
+                repuesto repuesto = this.repuestosConsulta.mostrarRepuestosPorReferenciaParaModificar(referenciaModificar.Text);
                 
                 if(ingresoCheck.Checked)
                 {
@@ -117,8 +118,8 @@ namespace RepuestosInventario
                 {
                     MessageBox.Show("No a selecionado ninguna operacion");
                 }
-                repuestosConsulta.mostrarRepuestos(listaRepuestos);
-                repuestosConsulta.mostrarRepuestosPorReferencia(tablaRetiro, referenciaModificar.Text);
+                this.repuestosConsulta.mostrarRepuestos(listaRepuestos);
+                this.repuestosConsulta.mostrarRepuestosPorReferencia(tablaRetiro, referenciaModificar.Text);
             }
             else
             {
@@ -127,21 +128,17 @@ namespace RepuestosInventario
         }
         private void buscarReferenciaBT_Click(object sender, EventArgs e)
         {
-       
-            repuestoPostgreSQLConsulta repuestosConsulta = new repuestoPostgreSQLConsulta();
-            repuestosConsulta.mostrarRepuestosPorReferencia(tablaBusquedaReferencia, busquedaReferenciaText.Text);
+            this.repuestosConsulta.mostrarRepuestosPorReferencia(tablaBusquedaReferencia, busquedaReferenciaText.Text);
 
         }
         private void buscarNombreBT_Click(object sender, EventArgs e)
         {
-            repuestoPostgreSQLConsulta repuestosConsulta = new repuestoPostgreSQLConsulta();
-            repuestosConsulta.mostrarRepuestosPorNombre(tablaBusquedaNombre, nombreBuscar.Text);
+            this.repuestosConsulta.mostrarRepuestosPorNombre(tablaBusquedaNombre, nombreBuscar.Text);
         }
 
         private void retiroIngresoCantidad(string referencia , short cantidad)
         {
-            repuestoPosgreSQLComando repuestosComando = new repuestoPosgreSQLComando();
-            repuestosComando.modificarRepuesto(referenciaModificar.Text, cantidad);
+            this.repuestosComando.modificarRepuesto(referenciaModificar.Text, cantidad);
         }
         private void ventaCheck_CheckedChanged(object sender, EventArgs e)
         {
@@ -159,9 +156,6 @@ namespace RepuestosInventario
         }
         private void modificarValorBT_Click(object sender, EventArgs e)
         {
-            repuestoPosgreSQLComando repuestosComando = new repuestoPosgreSQLComando();
-            repuestoPostgreSQLConsulta repuestosConsulta = new repuestoPostgreSQLConsulta();
-
             if(precioModificar.Text == "")
             {
                 precioModificar.Text = "0";
@@ -170,8 +164,8 @@ namespace RepuestosInventario
             {
                 costoModificar.Text = "0";
             }
-            repuestosComando.modificarRepuestoPrecio(referenciaModificarPrecio.Text,double.Parse(precioModificar.Text),double.Parse(costoModificar.Text));
-            repuestosConsulta.mostrarRepuestosPorReferencia(listaRepuestos, referenciaModificarPrecio.Text);
+            this.repuestosComando.modificarRepuestoPrecio(referenciaModificarPrecio.Text,double.Parse(precioModificar.Text),double.Parse(costoModificar.Text));
+            this.repuestosConsulta.mostrarRepuestosPorReferencia(listaRepuestos, referenciaModificarPrecio.Text);
         }
         private void precio_MouseMove(object sender, MouseEventArgs e)
         {
@@ -211,8 +205,7 @@ namespace RepuestosInventario
 
         private void listaProductosMenu_Click(object sender, EventArgs e)
         {
-            repuestoPostgreSQLConsulta repuestosConsulta = new repuestoPostgreSQLConsulta();
-            repuestosConsulta.mostrarRepuestos(listaRepuestos);
+            this.repuestosConsulta.mostrarRepuestos(listaRepuestos);
             ocultarSubMenu();
             ocultarGroup();
             groupBoxLista.Visible = true;
