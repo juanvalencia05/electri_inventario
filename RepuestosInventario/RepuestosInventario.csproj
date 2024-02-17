@@ -145,6 +145,7 @@
     <Compile Include="src\repositorio\repositorioPostgreSQL\repuestoPosgreSQLComando.cs" />
     <Compile Include="src\repositorio\repositorioPostgreSQL\repuestoPostgreSQLConsulta.cs" />
     <Compile Include="src\trasnversal\EdicionData.cs" />
+    <Compile Include="src\trasnversal\Imprimir.cs" />
     <EmbeddedResource Include="FormInventario.resx">
       <DependentUpon>FormInventario.cs</DependentUpon>
     </EmbeddedResource>

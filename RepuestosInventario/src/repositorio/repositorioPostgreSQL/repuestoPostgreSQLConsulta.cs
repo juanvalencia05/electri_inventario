@@ -1,6 +1,7 @@
 ﻿using Npgsql;
 using RepuestosInventario.src.dominio;
 using RepuestosInventario.src.trasnversal;
+using System;
 using System.Data;
 using System.Windows.Forms;
 
@@ -146,32 +147,35 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
         {
             try
             {
-                PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
-                repuesto repuesto;
-
-                string sqlConsulta = "select *from repuesto WHERE referencia like'%" + referencia + "%';";
-
-                NpgsqlCommand comando = new NpgsqlCommand(sqlConsulta, objetoConexion.establecerConexion());
-                NpgsqlDataReader reader = comando.ExecuteReader();
-
-                if(reader.Read())
+                using (var conn = new NpgsqlConnection("connection_string_here"))
                 {
-                     repuesto = repuesto.build(reader["referencia"].ToString(),reader["nombre"].ToString(),
-                       reader["marca"].ToString(), short.Parse(reader["cantidad"].ToString()),
-                       int.Parse(reader["precio"].ToString()), int.Parse(reader["costo"].ToString()));
+                    conn.Open();
+                    using (var cmd = new NpgsqlCommand("SELECT * FROM repuesto WHERE referencia = @referencia", conn))
+                    {
+                        cmd.Parameters.AddWithValue("referencia", referencia);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return repuesto.build(
+                                    reader["referencia"].ToString(),
+                                    reader["nombre"].ToString(),
+                                    reader["marca"].ToString(),
+                                    short.Parse(reader["cantidad"].ToString()),
+                                    int.Parse(reader["precio"].ToString()),
+                                    int.Parse(reader["costo"].ToString()));
+                            }
+                            else
+                            {
+                                return null;
+                            }
+                        }
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("No se trajo la información");
-                    repuesto = null;
-                }                                          
-                objetoConexion.cerrarConexion();
-                return repuesto;
-
             }
-            catch
+            catch (Exception)
             {
-                MessageBox.Show("No se puedo mostrar la información");
+                MessageBox.Show($"No existe este repuesto");
                 return null;
             }
         }

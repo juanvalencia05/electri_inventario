@@ -30,11 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInventario));
             this.groupBoxRegistro = new System.Windows.Forms.GroupBox();
-            this.groupBoxEliminar = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.EliminarBT = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.referenciaEliminar = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.nombre = new System.Windows.Forms.TextBox();
             this.marca = new System.Windows.Forms.TextBox();
@@ -49,6 +44,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.guardar = new System.Windows.Forms.Button();
             this.precio = new System.Windows.Forms.TextBox();
+            this.groupBoxEliminar = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.EliminarBT = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.referenciaEliminar = new System.Windows.Forms.TextBox();
             this.listaRepuestos = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelMenu = new System.Windows.Forms.Panel();
@@ -103,9 +103,9 @@
             this.busquedaMarcaText = new System.Windows.Forms.TextBox();
             this.BusquedaMarcaBT = new System.Windows.Forms.Button();
             this.groupBoxRegistro.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.groupBoxEliminar.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaRepuestos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelMenu.SuspendLayout();
@@ -142,80 +142,6 @@
             this.groupBoxRegistro.TabIndex = 0;
             this.groupBoxRegistro.TabStop = false;
             this.groupBoxRegistro.UseCompatibleTextRendering = true;
-            // 
-            // groupBoxEliminar
-            // 
-            this.groupBoxEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxEliminar.Controls.Add(this.tableLayoutPanel7);
-            this.groupBoxEliminar.Location = new System.Drawing.Point(229, 12);
-            this.groupBoxEliminar.Name = "groupBoxEliminar";
-            this.groupBoxEliminar.Size = new System.Drawing.Size(639, 493);
-            this.groupBoxEliminar.TabIndex = 14;
-            this.groupBoxEliminar.TabStop = false;
-            // 
-            // tableLayoutPanel7
-            // 
-            this.tableLayoutPanel7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tableLayoutPanel7.ColumnCount = 5;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel7.Controls.Add(this.EliminarBT, 1, 5);
-            this.tableLayoutPanel7.Controls.Add(this.label15, 1, 1);
-            this.tableLayoutPanel7.Controls.Add(this.referenciaEliminar, 1, 3);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(5, 12);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 7;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(628, 474);
-            this.tableLayoutPanel7.TabIndex = 3;
-            // 
-            // EliminarBT
-            // 
-            this.EliminarBT.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tableLayoutPanel7.SetColumnSpan(this.EliminarBT, 3);
-            this.EliminarBT.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EliminarBT.Location = new System.Drawing.Point(229, 346);
-            this.EliminarBT.Name = "EliminarBT";
-            this.EliminarBT.Size = new System.Drawing.Size(167, 45);
-            this.EliminarBT.TabIndex = 2;
-            this.EliminarBT.Text = "Eliminar";
-            this.EliminarBT.UseVisualStyleBackColor = true;
-            this.EliminarBT.Click += new System.EventHandler(this.EliminarBT_Click);
-            // 
-            // label15
-            // 
-            this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label15.AutoSize = true;
-            this.tableLayoutPanel7.SetColumnSpan(this.label15, 3);
-            this.label15.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(149, 90);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(326, 21);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "Digite la referencia del respuesto a eliminar";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // referenciaEliminar
-            // 
-            this.referenciaEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel7.SetColumnSpan(this.referenciaEliminar, 3);
-            this.referenciaEliminar.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.referenciaEliminar.Location = new System.Drawing.Point(128, 221);
-            this.referenciaEliminar.Name = "referenciaEliminar";
-            this.referenciaEliminar.Size = new System.Drawing.Size(369, 27);
-            this.referenciaEliminar.TabIndex = 1;
-            this.referenciaEliminar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tableLayoutPanel1
             // 
@@ -423,6 +349,80 @@
             this.precio.TabIndex = 3;
             this.precio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.precio.MouseMove += new System.Windows.Forms.MouseEventHandler(this.precio_MouseMove);
+            // 
+            // groupBoxEliminar
+            // 
+            this.groupBoxEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxEliminar.Controls.Add(this.tableLayoutPanel7);
+            this.groupBoxEliminar.Location = new System.Drawing.Point(229, 12);
+            this.groupBoxEliminar.Name = "groupBoxEliminar";
+            this.groupBoxEliminar.Size = new System.Drawing.Size(639, 493);
+            this.groupBoxEliminar.TabIndex = 14;
+            this.groupBoxEliminar.TabStop = false;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanel7.ColumnCount = 5;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel7.Controls.Add(this.EliminarBT, 1, 5);
+            this.tableLayoutPanel7.Controls.Add(this.label15, 1, 1);
+            this.tableLayoutPanel7.Controls.Add(this.referenciaEliminar, 1, 3);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(5, 12);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 7;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(628, 474);
+            this.tableLayoutPanel7.TabIndex = 3;
+            // 
+            // EliminarBT
+            // 
+            this.EliminarBT.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanel7.SetColumnSpan(this.EliminarBT, 3);
+            this.EliminarBT.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EliminarBT.Location = new System.Drawing.Point(229, 346);
+            this.EliminarBT.Name = "EliminarBT";
+            this.EliminarBT.Size = new System.Drawing.Size(167, 45);
+            this.EliminarBT.TabIndex = 2;
+            this.EliminarBT.Text = "Eliminar";
+            this.EliminarBT.UseVisualStyleBackColor = true;
+            this.EliminarBT.Click += new System.EventHandler(this.EliminarBT_Click);
+            // 
+            // label15
+            // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label15.AutoSize = true;
+            this.tableLayoutPanel7.SetColumnSpan(this.label15, 3);
+            this.label15.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(149, 90);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(326, 21);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Digite la referencia del respuesto a eliminar";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // referenciaEliminar
+            // 
+            this.referenciaEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel7.SetColumnSpan(this.referenciaEliminar, 3);
+            this.referenciaEliminar.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.referenciaEliminar.Location = new System.Drawing.Point(128, 221);
+            this.referenciaEliminar.Name = "referenciaEliminar";
+            this.referenciaEliminar.Size = new System.Drawing.Size(369, 27);
+            this.referenciaEliminar.TabIndex = 1;
+            this.referenciaEliminar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // listaRepuestos
             // 
@@ -749,7 +749,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(194, 44);
             this.label14.TabIndex = 5;
-            this.label14.Text = "Digite la referencia del Producto a actualizar";
+            this.label14.Text = "Digite la referencia del repuesto a actualizar";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label12
@@ -872,12 +872,12 @@
             this.label11.AutoSize = true;
             this.tableLayoutPanel2.SetColumnSpan(this.label11, 3);
             this.label11.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(131, 29);
+            this.label11.Location = new System.Drawing.Point(134, 29);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(367, 21);
+            this.label11.Size = new System.Drawing.Size(362, 21);
             this.label11.TabIndex = 6;
-            this.label11.Text = "Digite el nombre del producto que desea buscar";
+            this.label11.Text = "Digite el nombre del repuesto que desea buscar";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBoxBuscarReferencia
@@ -951,12 +951,12 @@
             this.label10.AutoSize = true;
             this.tableLayoutPanel3.SetColumnSpan(this.label10, 3);
             this.label10.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(151, 21);
+            this.label10.Location = new System.Drawing.Point(154, 21);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(327, 42);
+            this.label10.Size = new System.Drawing.Size(322, 42);
             this.label10.TabIndex = 2;
-            this.label10.Text = "Digite la referencia del producto que desea buscar";
+            this.label10.Text = "Digite la referencia del repuesto que desea buscar";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // busquedaReferenciaText
@@ -1088,12 +1088,12 @@
             this.label5.AutoSize = true;
             this.tableLayoutPanel4.SetColumnSpan(this.label5, 3);
             this.label5.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(183, 53);
+            this.label5.Location = new System.Drawing.Point(184, 53);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(269, 22);
+            this.label5.Size = new System.Drawing.Size(266, 22);
             this.label5.TabIndex = 5;
-            this.label5.Text = "Digite la referencia del producto";
+            this.label5.Text = "Digite la referencia del repuesto";
             // 
             // referenciaModificar
             // 
@@ -1187,11 +1187,11 @@
             this.label9.AutoSize = true;
             this.tableLayoutPanel6.SetColumnSpan(this.label9, 3);
             this.label9.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(202, 26);
+            this.label9.Location = new System.Drawing.Point(204, 26);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(221, 21);
+            this.label9.Size = new System.Drawing.Size(216, 21);
             this.label9.TabIndex = 0;
-            this.label9.Text = "Digite la marca del producto";
+            this.label9.Text = "Digite la marca del repuesto";
             // 
             // busquedaMarcaText
             // 
@@ -1221,13 +1221,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(882, 517);
+            this.Controls.Add(this.groupBoxVenta);
+            this.Controls.Add(this.groupBoxActualizar);
+            this.Controls.Add(this.groupBoxBuscarNombre);
+            this.Controls.Add(this.groupBoxBuscarReferencia);
             this.Controls.Add(this.groupBusquedaMarca);
             this.Controls.Add(this.groupBoxEliminar);
             this.Controls.Add(this.groupBoxRegistro);
-            this.Controls.Add(this.groupBoxVenta);
-            this.Controls.Add(this.groupBoxActualizar);
-            this.Controls.Add(this.groupBoxBuscarReferencia);
-            this.Controls.Add(this.groupBoxBuscarNombre);
             this.Controls.Add(this.groupBoxLista);
             this.Controls.Add(this.panelMenu);
             this.ForeColor = System.Drawing.Color.Black;
@@ -1236,11 +1236,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventario";
             this.groupBoxRegistro.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.groupBoxEliminar.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaRepuestos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelMenu.ResumeLayout(false);

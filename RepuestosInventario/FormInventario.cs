@@ -108,40 +108,48 @@ namespace RepuestosInventario
         private void retiroIngreso_Click(object sender, EventArgs e)
         {
             short cant = 0;
-
-            if (referenciaModificar.Text != "" && cantidadModificar.Text != "")
-            {
-                repuesto repuesto = this.repuestosConsulta.mostrarRepuestosPorReferenciaParaModificar(referenciaModificar.Text);
-                
-                if(ingresoCheck.Checked)
+            try {
+                if (referenciaModificar.Text != "" && cantidadModificar.Text != "")
                 {
-                    cant = (short)(repuesto.Cantidad + short.Parse(cantidadModificar.Text));
-                    this.retiroIngresoCantidad(referenciaModificar.Text, cant);
+                    repuesto repuesto = this.repuestosConsulta.mostrarRepuestosPorReferenciaParaModificar(referenciaModificar.Text);
 
-                }
-                else if (ventaCheck.Checked)
-                {
-                    cant = (short)(repuesto.Cantidad - short.Parse(cantidadModificar.Text));
-                    if(cant >= 0)
+                    if (ingresoCheck.Checked && repuesto != null)
                     {
+                        cant = (short)(repuesto.Cantidad + short.Parse(cantidadModificar.Text));
                         this.retiroIngresoCantidad(referenciaModificar.Text, cant);
+
                     }
-                    else
+                    else if (ventaCheck.Checked && repuesto != null)
                     {
-                        MessageBox.Show("No tiene cantidad suficientes de esta referencia", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);                      
+                        cant = (short)(repuesto.Cantidad - short.Parse(cantidadModificar.Text));
+                        if (cant >= 0)
+                        {
+                            this.retiroIngresoCantidad(referenciaModificar.Text, cant);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No tiene cantidad suficientes de esta referencia", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
+                    else if (!ingresoCheck.Checked && !ventaCheck.Checked)
+                    {
+                        MessageBox.Show("No ha seleccionado ninguna operación");
+                    }
+                    this.repuestosConsulta.mostrarRepuestos(listaRepuestos);
+                    this.repuestosConsulta.mostrarRepuestosPorReferencia(tablaRetiro, referenciaModificar.Text);
+                    cantidadModificar.Text = "";
+                    referenciaModificar.Text = "";
                 }
-                else
+                else 
                 {
-                    MessageBox.Show("No a selecionado ninguna operacion");
+                    MessageBox.Show("Deba ingresar una Referencia ó cantidad");
                 }
-                this.repuestosConsulta.mostrarRepuestos(listaRepuestos);
-                this.repuestosConsulta.mostrarRepuestosPorReferencia(tablaRetiro, referenciaModificar.Text);
-            }
-            else
+            }catch (Exception)
             {
-                MessageBox.Show("Deba ingresar una Referencia ó cantidad");
+                MessageBox.Show("No se pudo realizar la operación");
             }
+
+
         }
         private void buscarReferenciaBT_Click(object sender, EventArgs e)
         {
