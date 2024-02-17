@@ -9,5 +9,7 @@ namespace RepuestosInventario.src.repositorio
         void guardarRepuesto(repuesto repuesto);
         void modificarRepuesto(string referencia, short cantidad);
         void modificarRepuestoPrecio(string referencia, double precio, double costo);
+
+        void eliminarRepuesto(string referencia);
     }
 }

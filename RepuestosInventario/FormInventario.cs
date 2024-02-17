@@ -27,6 +27,7 @@ namespace RepuestosInventario
             groupBoxBuscarNombre.Visible = false;
             groupBoxActualizar.Visible = false;
             groupBusquedaMarca.Visible = false;
+            groupBoxEliminar.Visible = false;
         }
         private void ocultarGroup()
         {
@@ -44,6 +45,8 @@ namespace RepuestosInventario
                 groupBoxActualizar.Visible = false;
             if (groupBusquedaMarca.Visible == true)
                 groupBusquedaMarca.Visible = false;
+            if (groupBoxEliminar.Visible == true)
+                groupBoxEliminar.Visible = false;
         }
         private void ocultarSubMenu()
         {
@@ -67,21 +70,32 @@ namespace RepuestosInventario
         }
         private void guardar_Click_1(object sender, EventArgs e)
         {
-            try
-            {
-                formatoMoneda(precio);
-                formatoMoneda(costo);
-                repuesto repuesto = repuesto.build(referencia.Text, nombre.Text, marca.Text, short.Parse(cantidad.Text), double.Parse(precio.Text), double.Parse(costo.Text));
-                if(referencia.Text != "" && nombre.Text != "" && marca.Text != "" &&
-                    cantidad.Text != "" && precio.Text != "" && costo.Text != "")
-                {
-                    referencia.Text = nombre.Text = marca.Text = cantidad.Text = precio.Text = costo.Text = "";
-                }
-                this.repuestosComando.guardarRepuesto(repuesto);
-                this.repuestosConsulta.mostrarRepuestos(listaRepuestos);
-            } catch (Exception)
+            if (string.IsNullOrEmpty(referencia.Text) || string.IsNullOrEmpty(nombre.Text) || string.IsNullOrEmpty(marca.Text) ||
+                string.IsNullOrEmpty(cantidad.Text) || string.IsNullOrEmpty(precio.Text) || string.IsNullOrEmpty(costo.Text))
             {
                 MessageBox.Show("Por favor diligencie todos los campos del formulario");
+            }
+            else if (this.repuestosConsulta.consultaDevuelveInformacion(referencia.Text))
+            {
+                MessageBox.Show("Ya existe un repuesto con esta referencia");
+            }
+            else
+            {
+                try
+                {
+                    formatoMoneda(precio);
+                    formatoMoneda(costo);
+                    repuesto repuesto = repuesto.build(referencia.Text, nombre.Text, marca.Text, short.Parse(cantidad.Text), double.Parse(precio.Text), double.Parse(costo.Text));
+
+                    referencia.Text = nombre.Text = marca.Text = cantidad.Text = precio.Text = costo.Text = "";
+
+                    this.repuestosComando.guardarRepuesto(repuesto);
+                    this.repuestosConsulta.mostrarRepuestos(listaRepuestos);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Por favor diligencie todos los campos del formulario");
+                }
             }
 
         }
@@ -174,6 +188,10 @@ namespace RepuestosInventario
             }
             this.repuestosComando.modificarRepuestoPrecio(referenciaModificarPrecio.Text,double.Parse(precioModificar.Text),double.Parse(costoModificar.Text));
             this.repuestosConsulta.mostrarRepuestosPorReferencia(listaRepuestos, referenciaModificarPrecio.Text);
+            referenciaModificarPrecio.Text = "";
+            costoModificar.Text = "";
+            precioModificar.Text = "";
+
         }
         private void precio_MouseMove(object sender, MouseEventArgs e)
         {
@@ -257,16 +275,19 @@ namespace RepuestosInventario
             costoModificar.Text = "";
             groupBoxActualizar.Visible = true;
         }
-        private void label6_Click(object sender, EventArgs e)
-        {
 
+        private void eliminarMenu_Click(object sender, EventArgs e)
+        {
+            ocultarGroup();
+            ocultarSubMenu();
+            referenciaEliminar.Text = "";
+            groupBoxEliminar.Visible = true;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void EliminarBT_Click(object sender, EventArgs e)
         {
-
+            this.repuestosComando.eliminarRepuesto(referenciaEliminar.Text);
+            referenciaEliminar.Text = "";
         }
-
-
     }
 }

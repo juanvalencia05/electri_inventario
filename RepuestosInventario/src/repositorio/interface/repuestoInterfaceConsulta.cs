@@ -1,4 +1,5 @@
-﻿using RepuestosInventario.src.dominio;
+﻿using Npgsql;
+using RepuestosInventario.src.dominio;
 using System.Windows.Forms;
 
 namespace RepuestosInventario.src.repositorio
@@ -16,5 +17,7 @@ namespace RepuestosInventario.src.repositorio
         void seleccionarRepuesto(DataGridView tablaRespuestos, TextBox referencia);
 
         log inicioSesion(string usuario, string contrasena);
+
+        bool consultaDevuelveInformacion(string referencia);
     }
 }

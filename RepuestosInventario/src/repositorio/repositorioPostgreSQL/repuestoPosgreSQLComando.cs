@@ -1,6 +1,7 @@
 ﻿using NHibernate.Hql.Ast;
 using Npgsql;
 using RepuestosInventario.src.dominio;
+using System;
 using System.Data;
 using System.Windows.Forms;
 
@@ -8,88 +9,120 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
 {
     public class repuestoPosgreSQLComando : repuestoInterfaceComando
     {
+        private PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
         public void guardarRepuesto(repuesto repuesto)
         {
             try
             {
-                PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
-
                 string sqlInsertar = "INSERT INTO repuesto (referencia, nombre, marca, cantidad, precio, costo) " +
-                    "VALUES ('" + repuesto.Referencia + "','" + repuesto.Nombre + "','" + repuesto.Marca + "','" + repuesto.Cantidad + "','" + repuesto.Precio + "','" + repuesto.Costo + "');";
+                    "VALUES (@referencia, @nombre, @marca, @cantidad, @precio, @costo);";
 
-                NpgsqlCommand comando = new NpgsqlCommand(sqlInsertar, objetoConexion.establecerConexion());
- 
-                NpgsqlDataReader reader = comando.ExecuteReader();
-                MessageBox.Show("Se puedo guardar la información");
-                while (reader.Read()) { }
-                objetoConexion.cerrarConexion();
+                using (NpgsqlCommand comando = new NpgsqlCommand(sqlInsertar, this.objetoConexion.establecerConexion()))
+                {
+                    comando.Parameters.AddWithValue("@referencia", repuesto.Referencia);
+                    comando.Parameters.AddWithValue("@nombre", repuesto.Nombre);
+                    comando.Parameters.AddWithValue("@marca", repuesto.Marca);
+                    comando.Parameters.AddWithValue("@cantidad", repuesto.Cantidad);
+                    comando.Parameters.AddWithValue("@precio", repuesto.Precio);
+                    comando.Parameters.AddWithValue("@costo", repuesto.Costo);
+
+                    comando.ExecuteNonQuery();
+                }
+                MessageBox.Show("Se pudo guardar la información");
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("No se puedo registrar la información");
+                MessageBox.Show("Error al guardar la información: " + ex.Message);
+            }
+            finally
+            {
+                objetoConexion.cerrarConexion();
             }
         }
 
         public void modificarRepuesto(string referencia, short cantidad)
         {
             try {
-                PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
+                string sqlUpdateCantidad = "UPDATE repuesto SET cantidad=@cantidad WHERE referencia=@referencia;";
 
-                string sqlUpdateCantidad = "UPDATE  repuesto SET cantidad=" + cantidad +
-                    " WHERE referencia='" + referencia + "';";
+                using (NpgsqlCommand comando = new NpgsqlCommand(sqlUpdateCantidad, objetoConexion.establecerConexion()))
+                {
+                    comando.Parameters.AddWithValue("@cantidad", cantidad);
+                    comando.Parameters.AddWithValue("@referencia", referencia);
 
-                NpgsqlCommand comando = new NpgsqlCommand(sqlUpdateCantidad, objetoConexion.establecerConexion());
-                NpgsqlDataReader reader = comando.ExecuteReader();
-                MessageBox.Show("Se Actualizo la informacion");
-                while (reader.Read()){ }
-                objetoConexion.cerrarConexion();
+                    comando.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Se actualizó la información");
             }
-            catch {
-                MessageBox.Show("No se puedo Actualizo la información");
+            catch (Exception ) {
+                MessageBox.Show("No se pudo actualizar la información");
+            }
+            finally {
+                objetoConexion.cerrarConexion();
             }
         }
 
         public void modificarRepuestoPrecio(string referencia, double precio, double costo)
         {
+            string sqlUpdate = ElejirValorACambiar(precio, costo, referencia);
             try
             {
-                PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
-                string sqlUpdate = ElejirCuantoValoresCambiar(precio,costo, referencia);
-
-                NpgsqlCommand comando = new NpgsqlCommand(sqlUpdate, objetoConexion.establecerConexion());
-                NpgsqlDataReader reader = comando.ExecuteReader();
+                NpgsqlCommand comando = new NpgsqlCommand(sqlUpdate, this.objetoConexion.establecerConexion());
+                comando.ExecuteNonQuery();
                 MessageBox.Show("Se Actualizo la información");
-                while (reader.Read())
-                {
-
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar la información: " + ex.Message);
+            }
+            finally
+            {
                 objetoConexion.cerrarConexion();
             }
-            catch
-            {
-                MessageBox.Show("No se puedo Actualizar la información");
-            }
         }
-        private string ElejirCuantoValoresCambiar(double precio, double costo, string referencia)
+        private string ElejirValorACambiar(double precio, double costo, string referencia)
         {
-            string sqlUpdate = "";  
+            string sqlUpdate = "UPDATE  repuesto ";  
 
             if (precio > 0 && costo > 0)
             {
-                sqlUpdate = "UPDATE  repuesto SET precio=" + precio + ", costo=" + costo +
+                sqlUpdate += "SET precio=" + precio + ", costo=" + costo +
                                    " WHERE referencia='" + referencia + "';";
             }
             else if (precio > 0 && costo == 0)
             {
-                sqlUpdate = "UPDATE  repuesto SET precio=" + precio +
+                sqlUpdate += "SET precio=" + precio +
                                     " WHERE referencia='" + referencia + "';";
             }
-            else if(costo > 0 && precio ==0)
+            else if(costo > 0 && precio == 0)
             {
-                sqlUpdate = "UPDATE  repuesto SET costo=" + costo +
+                sqlUpdate += "SET costo=" + costo +
                                     " WHERE referencia='" + referencia + "';";
             }
             return sqlUpdate;
+        }
+
+        public void eliminarRepuesto(string referencia)
+        {
+            try {
+                string sqlDelete = "DELETE FROM repuesto WHERE referencia=@referencia;";
+
+                using (NpgsqlCommand comando = new NpgsqlCommand(sqlDelete, this.objetoConexion.establecerConexion()))
+                {
+                    comando.Parameters.AddWithValue("@referencia", referencia);
+
+                    comando.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Se eliminó el repuesto");
+            }
+            catch (Exception) {
+                MessageBox.Show("No se pudo eliminar el repuesto");
+            }
+            finally {
+                objetoConexion.cerrarConexion();
+            }
         }
     }
 }

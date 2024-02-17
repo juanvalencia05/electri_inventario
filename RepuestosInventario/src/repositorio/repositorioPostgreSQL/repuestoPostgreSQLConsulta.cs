@@ -73,7 +73,7 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
             try
             {
                 PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
-                string sqlConsulta = "select * from repuesto WHERE nombre='" + nombre + "';";
+                string sqlConsulta = "select * from repuesto WHERE nombre LIKE'" + nombre + "';";
                 tablaRespuestos.DataSource = null;
 
                 NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(sqlConsulta, objetoConexion.establecerConexion());
@@ -183,6 +183,18 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
             }
             catch {
                 MessageBox.Show("No se puedo seleccionar la información");
+            }
+        }
+
+        public bool consultaDevuelveInformacion(string referencia)
+        {
+            PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
+            string sqlConsulta = "select * from repuesto WHERE referencia ='" + referencia + "';";
+            
+            using (var comando = new NpgsqlCommand(sqlConsulta, objetoConexion.establecerConexion()))
+            {
+                var resultado = comando.ExecuteScalar();
+                return resultado != null;
             }
         }
     }
