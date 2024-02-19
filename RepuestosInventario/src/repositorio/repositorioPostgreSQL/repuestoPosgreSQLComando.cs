@@ -9,7 +9,6 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
 {
     public class repuestoPosgreSQLComando : repuestoInterfaceComando
     {
-        private PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
         public void guardarRepuesto(repuesto repuesto)
         {
             PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
@@ -44,6 +43,8 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
 
         public void modificarRepuesto(string referencia, short cantidad)
         {
+            PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
+
             try {
                 string sqlUpdateCantidad = "UPDATE repuesto SET cantidad=@cantidad WHERE referencia=@referencia;";
 
@@ -67,10 +68,12 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
 
         public void modificarRepuestoPrecio(string referencia, double precio, double costo)
         {
+            PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
+
             string sqlUpdate = ElejirValorACambiar(precio, costo, referencia);
             try
             {
-                NpgsqlCommand comando = new NpgsqlCommand(sqlUpdate, this.objetoConexion.establecerConexion());
+                NpgsqlCommand comando = new NpgsqlCommand(sqlUpdate, objetoConexion.establecerConexion());
                 comando.ExecuteNonQuery();
                 MessageBox.Show("Se Actualizo la información");
             }
@@ -107,10 +110,12 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
 
         public void eliminarRepuesto(string referencia)
         {
+            PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
+
             try {
                 string sqlDelete = "DELETE FROM repuesto WHERE referencia=@referencia;";
 
-                using (NpgsqlCommand comando = new NpgsqlCommand(sqlDelete, this.objetoConexion.establecerConexion()))
+                using (NpgsqlCommand comando = new NpgsqlCommand(sqlDelete, objetoConexion.establecerConexion()))
                 {
                     comando.Parameters.AddWithValue("@referencia", referencia);
 

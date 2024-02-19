@@ -145,11 +145,11 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
 
         public repuesto mostrarRepuestosPorReferenciaParaModificar(string referencia)
         {
+            PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
             try
             {
-                using (var conn = new NpgsqlConnection("connection_string_here"))
+                using (var conn = objetoConexion.establecerConexion())
                 {
-                    conn.Open();
                     using (var cmd = new NpgsqlCommand("SELECT * FROM repuesto WHERE referencia = @referencia", conn))
                     {
                         cmd.Parameters.AddWithValue("referencia", referencia);
@@ -175,7 +175,7 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
             }
             catch (Exception)
             {
-                MessageBox.Show($"No existe este repuesto");
+                MessageBox.Show($"No existe este repuesto hola");
                 return null;
             }
         }
