@@ -12,12 +12,14 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
         private PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
         public void guardarRepuesto(repuesto repuesto)
         {
+            PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
             try
             {
+               
                 string sqlInsertar = "INSERT INTO repuesto (referencia, nombre, marca, cantidad, precio, costo) " +
                     "VALUES (@referencia, @nombre, @marca, @cantidad, @precio, @costo);";
 
-                using (NpgsqlCommand comando = new NpgsqlCommand(sqlInsertar, this.objetoConexion.establecerConexion()))
+                using (NpgsqlCommand comando = new NpgsqlCommand(sqlInsertar, objetoConexion.establecerConexion()))
                 {
                     comando.Parameters.AddWithValue("@referencia", repuesto.Referencia);
                     comando.Parameters.AddWithValue("@nombre", repuesto.Nombre);
