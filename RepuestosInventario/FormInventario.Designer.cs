@@ -102,6 +102,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.busquedaMarcaText = new System.Windows.Forms.TextBox();
             this.BusquedaMarcaBT = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBoxRegistro.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBoxEliminar.SuspendLayout();
@@ -1016,6 +1017,7 @@
             this.tableLayoutPanel4.Controls.Add(this.label5, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.referenciaModificar, 1, 2);
             this.tableLayoutPanel4.Controls.Add(this.retiroIngreso, 1, 5);
+            this.tableLayoutPanel4.Controls.Add(this.button1, 0, 3);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 19);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -1216,6 +1218,16 @@
             this.BusquedaMarcaBT.UseVisualStyleBackColor = true;
             this.BusquedaMarcaBT.Click += new System.EventHandler(this.BusquedaMarcaBT_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 132);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1346,6 +1358,7 @@
         private System.Windows.Forms.TextBox referenciaEliminar;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.Button button1;
     }
 }
 

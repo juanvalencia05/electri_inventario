@@ -1,7 +1,10 @@
-﻿using RepuestosInventario.src.dominio;
+﻿using NHibernate.Impl;
+using RepuestosInventario.src.dominio;
 using RepuestosInventario.src.repositorio.repositorioPostgreSQL;
+using RepuestosInventario.src.trasnversal;
 using System;
 using System.Windows.Forms;
+using static System.Windows.Forms.LinkLabel;
 
 
 namespace RepuestosInventario
@@ -90,7 +93,6 @@ namespace RepuestosInventario
                     referencia.Text = nombre.Text = marca.Text = cantidad.Text = precio.Text = costo.Text = "";
 
                     this.repuestosComando.guardarRepuesto(repuesto);
-                    this.repuestosConsulta.mostrarRepuestos(listaRepuestos);
                 }
                 catch (Exception)
                 {
@@ -135,7 +137,6 @@ namespace RepuestosInventario
                     {
                         MessageBox.Show("No ha seleccionado ninguna operación");
                     }
-                    this.repuestosConsulta.mostrarRepuestos(listaRepuestos);
                     this.repuestosConsulta.mostrarRepuestosPorReferencia(tablaRetiro, referenciaModificar.Text);
                     cantidadModificar.Text = "";
                     referenciaModificar.Text = "";
@@ -296,6 +297,12 @@ namespace RepuestosInventario
         {
             this.repuestosComando.eliminarRepuesto(referenciaEliminar.Text);
             referenciaEliminar.Text = "";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Imprimir printer = new Imprimir();
+            printer.Print();
         }
     }
 }
