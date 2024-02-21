@@ -175,7 +175,7 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
             }
             catch (Exception)
             {
-                MessageBox.Show($"No existe este repuesto hola");
+                MessageBox.Show($"No existe este repuesto");
                 return null;
             }
         }

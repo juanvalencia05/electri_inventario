@@ -137,6 +137,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="src\dominio\repuestoVenta.cs" />
     <Compile Include="src\dominio\repuesto.cs" />
     <Compile Include="src\dominio\log.cs" />
     <Compile Include="src\repositorio\interface\repuestoInterfaceComando.cs" />

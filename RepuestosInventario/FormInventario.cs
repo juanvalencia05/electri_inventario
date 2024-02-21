@@ -1,10 +1,9 @@
-﻿using NHibernate.Impl;
-using RepuestosInventario.src.dominio;
+﻿using RepuestosInventario.src.dominio;
 using RepuestosInventario.src.repositorio.repositorioPostgreSQL;
 using RepuestosInventario.src.trasnversal;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
-using static System.Windows.Forms.LinkLabel;
 
 
 namespace RepuestosInventario
@@ -13,6 +12,9 @@ namespace RepuestosInventario
     {
         private repuestoPostgreSQLConsulta repuestosConsulta = new repuestoPostgreSQLConsulta();
         private repuestoPosgreSQLComando repuestosComando = new repuestoPosgreSQLComando();
+        List<repuestoVenta> inventario = new List<repuestoVenta>();
+        private DataGridViewButtonColumn eliminarButtonColumn;
+
 
         public FormInventario()
         {
@@ -31,6 +33,7 @@ namespace RepuestosInventario
             groupBoxActualizar.Visible = false;
             groupBusquedaMarca.Visible = false;
             groupBoxEliminar.Visible = false;
+            groupBoxImprecion.Visible = true;
         }
         private void ocultarGroup()
         {
@@ -50,6 +53,8 @@ namespace RepuestosInventario
                 groupBusquedaMarca.Visible = false;
             if (groupBoxEliminar.Visible == true)
                 groupBoxEliminar.Visible = false;
+            if (groupBoxImprecion.Visible == true)
+                groupBoxImprecion.Visible = false;
         }
         private void ocultarSubMenu()
         {
@@ -303,6 +308,125 @@ namespace RepuestosInventario
         {
             Imprimir printer = new Imprimir();
             printer.Print();
+        }
+
+        private void bucarImprimirBT_Click(object sender, EventArgs e)
+        {
+            repuesto repuestoAgregado = this.repuestosConsulta.mostrarRepuestosPorReferenciaParaModificar(buscarImprimirTB.Text);
+       
+            if (repuestoAgregado != null 
+                && this.inventario.Find(repuesto => repuesto.repuesto.Referencia == repuestoAgregado.Referencia) == null)
+            {
+                repuestoVenta repuesto = new repuestoVenta(repuestoAgregado, 0);
+                this.inventario.Add(repuesto);
+                if (!dataGridViewImprimir.Columns.Contains("Nombre"))
+                {
+                    dataGridViewImprimir.Columns.Add("Referencia", "Referencia");
+                    dataGridViewImprimir.Columns.Add("Nombre", "Nombre");
+                    dataGridViewImprimir.Columns.Add("Precio", "Precio");
+                    dataGridViewImprimir.Columns.Add("Cantidad", "Cantidad");
+                }
+                dataGridViewImprimir.DataSource = null;
+                this.agregarFila();
+
+                if (!dataGridViewImprimir.Columns.Contains("Eliminar"))
+                {
+                    // Crear la columna de botones
+                    eliminarButtonColumn = new DataGridViewButtonColumn();
+                    eliminarButtonColumn.HeaderText = "Eliminar";
+                    eliminarButtonColumn.Text = "Eliminar";
+                    eliminarButtonColumn.Name = "Eliminar";
+                    eliminarButtonColumn.UseColumnTextForButtonValue = true;
+
+                    // Agregar la columna al final del DataGridView
+                    dataGridViewImprimir.Columns.Add(eliminarButtonColumn);
+                }
+                this.agregarColumnaAlFinal();
+            }else if (repuestoAgregado == null) {
+                MessageBox.Show("No hay repuesto con esa referencia");
+
+            } else
+            {
+                MessageBox.Show("Ya agrego este repuesto");
+            }
+            //this.repuestos.Clear();
+        }
+
+        private void dataGridViewImprimir_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                int posicion = e.RowIndex;
+                // Verificar si la columna "Eliminar" existe
+                if (dataGridViewImprimir.Columns.Contains("Eliminar"))
+                {
+                    DataGridViewColumn columnaEliminar = dataGridViewImprimir.Columns["Eliminar"];
+                    if (columnaEliminar != null && e.ColumnIndex == columnaEliminar.Index)
+                    {
+                        // Eliminar el objeto de la lista en la posición correspondiente
+                        this.eliminarFila(posicion);
+
+                        // Actualizar el DataSource del DataGridView
+                        this.agregarFila();
+
+                        this.agregarColumnaAlFinal();
+                    }
+                } else {
+                    // Si la columna "Eliminar" no existe, simplemente eliminar el objeto de la lista
+                    this.eliminarFila(posicion);
+
+                    // Actualizar el DataSource del DataGridView
+                    this.agregarFila();
+
+                    this.agregarColumnaAlFinal();
+                }
+            }
+
+        }
+        void agregarColumnaAlFinal()
+        {
+            if (eliminarButtonColumn != null)
+            {
+                eliminarButtonColumn.DisplayIndex = dataGridViewImprimir.ColumnCount - 1;
+            }
+        }
+        
+        void eliminarFila(int posicion)
+        {
+            if (posicion < this.inventario.Count)
+            {
+                this.inventario.RemoveAt(posicion);
+            }
+        }
+
+        void agregarFila()
+        {
+            dataGridViewImprimir.Rows.Clear();
+            foreach (var repuestoIm in this.inventario)
+            {
+                dataGridViewImprimir.Rows.Add(repuestoIm.Repuesto.Referencia, repuestoIm.Repuesto.Nombre, repuestoIm.Repuesto.Precio, repuestoIm.cantidad);
+            }
+
+        }
+
+        private void dataGridViewImprimir_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < inventario.Count)
+            {
+                // Obtener el nuevo valor de cantidad desde la celda editada
+                int nuevaCantidad;
+                if (int.TryParse(dataGridViewImprimir.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out nuevaCantidad))
+                {
+                    // Actualizar la cantidad en la lista
+                    inventario[e.RowIndex] = new repuestoVenta(inventario[e.RowIndex].repuesto, nuevaCantidad);
+                }
+                else
+                {
+                    // Mostrar un mensaje de error si el valor no es válido
+                    MessageBox.Show("Cantidad no válida");
+                }
+            }
+
         }
     }
 }

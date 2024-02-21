@@ -103,6 +103,11 @@
             this.label9 = new System.Windows.Forms.Label();
             this.busquedaMarcaText = new System.Windows.Forms.TextBox();
             this.BusquedaMarcaBT = new System.Windows.Forms.Button();
+            this.groupBoxImprecion = new System.Windows.Forms.GroupBox();
+            this.dataGridViewImprimir = new System.Windows.Forms.DataGridView();
+            this.buscarImprimirTB = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.bucarImprimirBT = new System.Windows.Forms.Button();
             this.groupBoxRegistro.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBoxEliminar.SuspendLayout();
@@ -128,6 +133,8 @@
             this.groupBusquedaMarca.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaBusquedaMarca)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
+            this.groupBoxImprecion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImprimir)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxRegistro
@@ -1228,11 +1235,66 @@
             this.BusquedaMarcaBT.UseVisualStyleBackColor = true;
             this.BusquedaMarcaBT.Click += new System.EventHandler(this.BusquedaMarcaBT_Click);
             // 
+            // groupBoxImprecion
+            // 
+            this.groupBoxImprecion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxImprecion.Controls.Add(this.dataGridViewImprimir);
+            this.groupBoxImprecion.Controls.Add(this.buscarImprimirTB);
+            this.groupBoxImprecion.Controls.Add(this.label16);
+            this.groupBoxImprecion.Controls.Add(this.bucarImprimirBT);
+            this.groupBoxImprecion.Location = new System.Drawing.Point(232, 10);
+            this.groupBoxImprecion.Name = "groupBoxImprecion";
+            this.groupBoxImprecion.Size = new System.Drawing.Size(652, 495);
+            this.groupBoxImprecion.TabIndex = 15;
+            this.groupBoxImprecion.TabStop = false;
+            // 
+            // dataGridViewImprimir
+            // 
+            this.dataGridViewImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewImprimir.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewImprimir.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewImprimir.Location = new System.Drawing.Point(2, 315);
+            this.dataGridViewImprimir.Name = "dataGridViewImprimir";
+            this.dataGridViewImprimir.Size = new System.Drawing.Size(628, 150);
+            this.dataGridViewImprimir.TabIndex = 3;
+            this.dataGridViewImprimir.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewImprimir_CellContentClick);
+            this.dataGridViewImprimir.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewImprimir_CellEndEdit);
+            // 
+            // buscarImprimirTB
+            // 
+            this.buscarImprimirTB.Location = new System.Drawing.Point(141, 127);
+            this.buscarImprimirTB.Name = "buscarImprimirTB";
+            this.buscarImprimirTB.Size = new System.Drawing.Size(231, 20);
+            this.buscarImprimirTB.TabIndex = 2;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(273, 64);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(41, 13);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "label16";
+            // 
+            // bucarImprimirBT
+            // 
+            this.bucarImprimirBT.Location = new System.Drawing.Point(283, 200);
+            this.bucarImprimirBT.Name = "bucarImprimirBT";
+            this.bucarImprimirBT.Size = new System.Drawing.Size(75, 23);
+            this.bucarImprimirBT.TabIndex = 0;
+            this.bucarImprimirBT.Text = "Buscar";
+            this.bucarImprimirBT.UseVisualStyleBackColor = true;
+            this.bucarImprimirBT.Click += new System.EventHandler(this.bucarImprimirBT_Click);
+            // 
             // FormInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(882, 517);
+            this.Controls.Add(this.groupBoxImprecion);
             this.Controls.Add(this.groupBoxVenta);
             this.Controls.Add(this.groupBoxActualizar);
             this.Controls.Add(this.groupBoxBuscarNombre);
@@ -1280,6 +1342,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.tablaBusquedaMarca)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            this.groupBoxImprecion.ResumeLayout(false);
+            this.groupBoxImprecion.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImprimir)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1359,6 +1424,11 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBoxImprecion;
+        private System.Windows.Forms.TextBox buscarImprimirTB;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button bucarImprimirBT;
+        private System.Windows.Forms.DataGridView dataGridViewImprimir;
     }
 }
 
