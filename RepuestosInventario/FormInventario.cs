@@ -317,14 +317,15 @@ namespace RepuestosInventario
             if (repuestoAgregado != null 
                 && this.inventario.Find(repuesto => repuesto.repuesto.Referencia == repuestoAgregado.Referencia) == null)
             {
-                repuestoVenta repuesto = new repuestoVenta(repuestoAgregado, 0);
+                repuestoVenta repuesto = new repuestoVenta(repuestoAgregado, 1);
                 this.inventario.Add(repuesto);
                 if (!dataGridViewImprimir.Columns.Contains("Nombre"))
                 {
                     dataGridViewImprimir.Columns.Add("Referencia", "Referencia");
                     dataGridViewImprimir.Columns.Add("Nombre", "Nombre");
                     dataGridViewImprimir.Columns.Add("Precio", "Precio");
-                    dataGridViewImprimir.Columns.Add("Cantidad", "Cantidad");
+                    dataGridViewImprimir.Columns.Add("Cantidad disponible", "Cantidad disponible");
+                    dataGridViewImprimir.Columns.Add("Cantidad venta", "Cantidad venta");
                 }
                 dataGridViewImprimir.DataSource = null;
                 this.agregarFila();
@@ -404,7 +405,7 @@ namespace RepuestosInventario
             dataGridViewImprimir.Rows.Clear();
             foreach (var repuestoIm in this.inventario)
             {
-                dataGridViewImprimir.Rows.Add(repuestoIm.Repuesto.Referencia, repuestoIm.Repuesto.Nombre, repuestoIm.Repuesto.Precio, repuestoIm.cantidad);
+                dataGridViewImprimir.Rows.Add(repuestoIm.Repuesto.Referencia, repuestoIm.Repuesto.Nombre, repuestoIm.Repuesto.Precio, repuestoIm.Repuesto.Cantidad, repuestoIm.cantidad);
             }
 
         }
@@ -425,6 +426,47 @@ namespace RepuestosInventario
                     // Mostrar un mensaje de error si el valor no es válido
                     MessageBox.Show("Cantidad no válida");
                 }
+            }
+
+        }
+
+        private void factura_Click(object sender, EventArgs e)
+        {
+            ocultarGroup();
+            ocultarSubMenu();
+            groupBoxImprecion.Visible = true;
+
+        }
+
+        private void imprimirBT_Click(object sender, EventArgs e)
+        {
+            bool cantidadCorrecta = true;
+            double totalPagar = 0;
+            string pago;
+            if(this.inventario.Count > 0)
+            {
+                foreach (var repuestoIm in this.inventario)
+                {
+                    if(repuestoIm.Repuesto.Cantidad < repuestoIm.cantidad)
+                    {
+                        cantidadCorrecta = false;
+                        MessageBox.Show("El repuesto " + repuestoIm.Repuesto.Nombre + "no tiene la cantidad suficiente");
+                    }
+                    totalPagar += repuestoIm.Repuesto.Precio * repuestoIm.cantidad;
+                }
+                pago = formaPago.SelectedItem as String;
+                if (pago == null)
+                {
+                    MessageBox.Show("Porfavor seleccione la forma de pago");
+                }
+
+                if (!cantidadCorrecta)
+                {
+                    MessageBox.Show("Vmos bien pago: " + totalPagar + pago);
+                }
+            } else
+            {
+                MessageBox.Show("No hay repuesto seleccionados");
             }
 
         }
