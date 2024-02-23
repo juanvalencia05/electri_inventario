@@ -460,7 +460,6 @@
             this.listaRepuestos.RowTemplate.Height = 28;
             this.listaRepuestos.Size = new System.Drawing.Size(628, 504);
             this.listaRepuestos.TabIndex = 0;
-            this.listaRepuestos.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.listaRepuestos_CellMouseClick);
             // 
             // pictureBox1
             // 

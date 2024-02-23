@@ -14,8 +14,6 @@ namespace RepuestosInventario.src.repositorio
 
         void mostrarRepuestosPorMarca(DataGridView tablaRespuestos, string marca);
 
-        void seleccionarRepuesto(DataGridView tablaRespuestos, TextBox referencia);
-
         log inicioSesion(string usuario, string contrasena);
 
         bool consultaDevuelveInformacion(string referencia);

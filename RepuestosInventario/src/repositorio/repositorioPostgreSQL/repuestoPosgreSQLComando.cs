@@ -142,7 +142,6 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
                 {
                     sqlUpdate += "nombre= '" + nombre + "'";
                 }
-                
             }
             if (marca != "")
             {

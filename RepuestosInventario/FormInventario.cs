@@ -25,7 +25,7 @@ namespace RepuestosInventario
 
         private void ocultargroupbox()
         {
-            groupBoxRegistro.Visible = false;
+            groupBoxRegistro.Visible = true;
             groupBoxLista.Visible = false;
             groupBoxVenta.Visible = false;
             groupBoxBuscarReferencia.Visible = false;
@@ -67,6 +67,10 @@ namespace RepuestosInventario
                 panelBusqueda.Visible = true;
             }
         }
+        private void vaciarTables()
+        {
+
+        }
         void formatoMoneda(TextBox textBox) 
         {
             decimal monto;
@@ -105,11 +109,6 @@ namespace RepuestosInventario
                 }
             }
 
-        }
-
-        private void listaRepuestos_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            this.repuestosConsulta.seleccionarRepuesto(listaRepuestos, referenciaModificar);
         }
 
         private void retiroIngreso_Click(object sender, EventArgs e)

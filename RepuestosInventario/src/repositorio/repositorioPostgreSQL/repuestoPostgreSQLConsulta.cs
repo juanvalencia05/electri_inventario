@@ -86,7 +86,6 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
                 edicion.columnasSoloLectura(tablaRespuestos);
 
                 objetoConexion.cerrarConexion();
-
             }
             catch
             {
@@ -177,16 +176,6 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
             {
                 MessageBox.Show($"No existe este repuesto");
                 return null;
-            }
-        }
-
-        public void seleccionarRepuesto(DataGridView tablaRespuestos, TextBox referencia)
-        {
-            try {
-                referencia.Text = tablaRespuestos.CurrentRow.Cells[1].Value.ToString();
-            }
-            catch {
-                MessageBox.Show("No se puedo seleccionar la información");
             }
         }
 
