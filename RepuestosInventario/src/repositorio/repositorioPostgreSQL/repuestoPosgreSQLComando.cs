@@ -44,7 +44,6 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
         public void modificarRepuesto(string referencia, short cantidad)
         {
             PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
-
             try {
                 string sqlUpdateCantidad = "UPDATE repuesto SET cantidad=@cantidad WHERE referencia=@referencia;";
 
@@ -55,8 +54,6 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
 
                     comando.ExecuteNonQuery();
                 }
-
-                MessageBox.Show("Se actualizó la información");
             }
             catch (Exception ) {
                 MessageBox.Show("No se pudo actualizar la información");
@@ -107,6 +104,61 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
             }
             return sqlUpdate;
         }
+        public void actualizarRepuesto(string referencia, string referenciaActualizada, string nombre, string marca)
+        {
+            PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
+
+            string sqlUpdate= ElejirCampoActualizar(referencia, referenciaActualizada, nombre, marca);
+            try
+            {
+                NpgsqlCommand comando = new NpgsqlCommand(sqlUpdate, objetoConexion.establecerConexion());
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Se Actualizo la información");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al actualizar la información");
+            }
+            finally
+            {
+                objetoConexion.cerrarConexion();
+            }
+        }
+
+        private string ElejirCampoActualizar(string referencia, string referenciaActualizada, string nombre, string marca)
+        {
+            string sqlUpdate = "UPDATE  repuesto SET ";
+
+            if (referenciaActualizada != "")
+            {
+                sqlUpdate += "referencia= '" + referenciaActualizada + "'";
+            }
+            if (nombre != "")
+            { 
+                if(referenciaActualizada != "")
+                {
+                    sqlUpdate += ", nombre= '" + nombre + "'";
+                } else
+                {
+                    sqlUpdate += "nombre= '" + nombre + "'";
+                }
+                
+            }
+            if (marca != "")
+            {
+                if (nombre != "")
+                {
+                    sqlUpdate += ", marca= '" + marca + "'";
+                }
+                else
+                {
+                    sqlUpdate += "marca= '" + marca + "'";
+                }
+            }
+            sqlUpdate += " WHERE referencia='" + referencia + "';";
+
+            return sqlUpdate;
+        }
 
         public void eliminarRepuesto(string referencia)
         {
@@ -131,5 +183,6 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
                 objetoConexion.cerrarConexion();
             }
         }
+
     }
 }

@@ -13,7 +13,7 @@ namespace RepuestosInventario
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormInventario());
+            Application.Run(new FormLogin());
         }
     }
 }

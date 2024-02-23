@@ -14,7 +14,7 @@ namespace RepuestosInventario
         private repuestoPosgreSQLComando repuestosComando = new repuestoPosgreSQLComando();
         List<repuestoVenta> inventario = new List<repuestoVenta>();
         private DataGridViewButtonColumn eliminarButtonColumn;
-
+        Imprimir printer;
 
         public FormInventario()
         {
@@ -33,7 +33,7 @@ namespace RepuestosInventario
             groupBoxActualizar.Visible = false;
             groupBusquedaMarca.Visible = false;
             groupBoxEliminar.Visible = false;
-            groupBoxImprecion.Visible = true;
+            groupBoxImprecion.Visible = false;
         }
         private void ocultarGroup()
         {
@@ -200,11 +200,24 @@ namespace RepuestosInventario
             {
                 costoModificar.Text = "0";
             }
-            this.repuestosComando.modificarRepuestoPrecio(referenciaModificarPrecio.Text,double.Parse(precioModificar.Text),double.Parse(costoModificar.Text));
-            this.repuestosConsulta.mostrarRepuestosPorReferencia(listaRepuestos, referenciaModificarPrecio.Text);
-            referenciaModificarPrecio.Text = "";
-            costoModificar.Text = "";
-            precioModificar.Text = "";
+            if(referenciaModificarPrecio.Text != "")
+            {
+                if (precioModificar.Text != "0" || costoModificar.Text != "0")
+                {
+                    this.repuestosComando.modificarRepuestoPrecio(referenciaModificarPrecio.Text, double.Parse(precioModificar.Text), double.Parse(costoModificar.Text));
+                    referenciaModificarPrecio.Text = "";
+                    costoModificar.Text = "";
+                    precioModificar.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("No ha digitado ninguna información");
+                }
+
+            } else
+            {
+                MessageBox.Show("No ha digitado la referencia");
+            }
 
         }
         private void precio_MouseMove(object sender, MouseEventArgs e)
@@ -284,7 +297,6 @@ namespace RepuestosInventario
         {
             ocultarSubMenu();
             ocultarGroup();
-            referenciaModificarPrecio.Text = "";
             precioModificar.Text = "";
             costoModificar.Text = "";
             groupBoxActualizar.Visible = true;
@@ -302,12 +314,6 @@ namespace RepuestosInventario
         {
             this.repuestosComando.eliminarRepuesto(referenciaEliminar.Text);
             referenciaEliminar.Text = "";
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Imprimir printer = new Imprimir();
-            printer.Print();
         }
 
         private void bucarImprimirBT_Click(object sender, EventArgs e)
@@ -328,18 +334,16 @@ namespace RepuestosInventario
                     dataGridViewImprimir.Columns.Add("Cantidad venta", "Cantidad venta");
                 }
                 dataGridViewImprimir.DataSource = null;
-                this.agregarFila();
+                this.agregarFilas();
 
                 if (!dataGridViewImprimir.Columns.Contains("Eliminar"))
                 {
-                    // Crear la columna de botones
                     eliminarButtonColumn = new DataGridViewButtonColumn();
                     eliminarButtonColumn.HeaderText = "Eliminar";
                     eliminarButtonColumn.Text = "Eliminar";
                     eliminarButtonColumn.Name = "Eliminar";
                     eliminarButtonColumn.UseColumnTextForButtonValue = true;
 
-                    // Agregar la columna al final del DataGridView
                     dataGridViewImprimir.Columns.Add(eliminarButtonColumn);
                 }
                 this.agregarColumnaAlFinal();
@@ -350,7 +354,6 @@ namespace RepuestosInventario
             {
                 MessageBox.Show("Ya agrego este repuesto");
             }
-            //this.repuestos.Clear();
         }
 
         private void dataGridViewImprimir_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -358,31 +361,25 @@ namespace RepuestosInventario
             if (e.RowIndex >= 0)
             {
                 int posicion = e.RowIndex;
-                // Verificar si la columna "Eliminar" existe
                 if (dataGridViewImprimir.Columns.Contains("Eliminar"))
                 {
                     DataGridViewColumn columnaEliminar = dataGridViewImprimir.Columns["Eliminar"];
                     if (columnaEliminar != null && e.ColumnIndex == columnaEliminar.Index)
                     {
-                        // Eliminar el objeto de la lista en la posición correspondiente
-                        this.eliminarFila(posicion);
+                        this.eliminarFilas(posicion);
 
-                        // Actualizar el DataSource del DataGridView
-                        this.agregarFila();
+                        this.agregarFilas();
 
                         this.agregarColumnaAlFinal();
                     }
                 } else {
-                    // Si la columna "Eliminar" no existe, simplemente eliminar el objeto de la lista
-                    this.eliminarFila(posicion);
+                    this.eliminarFilas(posicion);
 
-                    // Actualizar el DataSource del DataGridView
-                    this.agregarFila();
+                    this.agregarFilas();
 
                     this.agregarColumnaAlFinal();
                 }
             }
-
         }
         void agregarColumnaAlFinal()
         {
@@ -392,7 +389,7 @@ namespace RepuestosInventario
             }
         }
         
-        void eliminarFila(int posicion)
+        void eliminarFilas(int posicion)
         {
             if (posicion < this.inventario.Count)
             {
@@ -400,14 +397,13 @@ namespace RepuestosInventario
             }
         }
 
-        void agregarFila()
+        void agregarFilas()
         {
             dataGridViewImprimir.Rows.Clear();
             foreach (var repuestoIm in this.inventario)
             {
                 dataGridViewImprimir.Rows.Add(repuestoIm.Repuesto.Referencia, repuestoIm.Repuesto.Nombre, repuestoIm.Repuesto.Precio, repuestoIm.Repuesto.Cantidad, repuestoIm.cantidad);
             }
-
         }
 
         private void dataGridViewImprimir_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -418,16 +414,13 @@ namespace RepuestosInventario
                 int nuevaCantidad;
                 if (int.TryParse(dataGridViewImprimir.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out nuevaCantidad))
                 {
-                    // Actualizar la cantidad en la lista
                     inventario[e.RowIndex] = new repuestoVenta(inventario[e.RowIndex].repuesto, nuevaCantidad);
                 }
                 else
                 {
-                    // Mostrar un mensaje de error si el valor no es válido
                     MessageBox.Show("Cantidad no válida");
                 }
             }
-
         }
 
         private void factura_Click(object sender, EventArgs e)
@@ -435,15 +428,15 @@ namespace RepuestosInventario
             ocultarGroup();
             ocultarSubMenu();
             groupBoxImprecion.Visible = true;
-
         }
 
         private void imprimirBT_Click(object sender, EventArgs e)
         {
             bool cantidadCorrecta = true;
             double totalPagar = 0;
-            string pago;
-            if(this.inventario.Count > 0)
+            string formaDePago;
+
+            if (this.inventario.Count > 0)
             {
                 foreach (var repuestoIm in this.inventario)
                 {
@@ -454,19 +447,51 @@ namespace RepuestosInventario
                     }
                     totalPagar += repuestoIm.Repuesto.Precio * repuestoIm.cantidad;
                 }
-                pago = formaPago.SelectedItem as String;
-                if (pago == null)
+                formaDePago = formaPago.SelectedItem as String;
+                if (formaDePago == null)
                 {
-                    MessageBox.Show("Porfavor seleccione la forma de pago");
-                }
-
-                if (!cantidadCorrecta)
+                    MessageBox.Show("Por favor seleccione la forma de pago");
+                } else
                 {
-                    MessageBox.Show("Vmos bien pago: " + totalPagar + pago);
+                    if (cantidadCorrecta)
+                    {
+                        foreach (var repuestoIm in this.inventario)
+                        {
+                            this.repuestosComando.modificarRepuesto(repuestoIm.Repuesto.Referencia, (short)(repuestoIm.Repuesto.Cantidad - repuestoIm.Cantidad));
+                        }
+                        dataGridViewImprimir.DataSource = null;
+                        buscarImprimirTB.Text = "";
+                        Imprimir printer = new Imprimir(this.inventario, totalPagar, formaDePago);
+                        printer.Print();
+                        this.inventario.Clear();
+                    }
                 }
             } else
             {
                 MessageBox.Show("No hay repuesto seleccionados");
+            }
+
+        }
+
+        private void actualizarRepuesto_Click(object sender, EventArgs e)
+        {
+            if(referenciaModificarPrecio.Text != "")
+            { 
+                if(referenciaNueva.Text != "" || nombreNuevo.Text != "" || marcaNuevo.Text != "")
+                {
+                    this.repuestosComando.actualizarRepuesto(referenciaModificarPrecio.Text, referenciaNueva.Text, nombreNuevo.Text, marcaNuevo.Text);
+                    referenciaModificarPrecio.Text = "";
+                    referenciaNueva.Text = "";
+                    nombreNuevo.Text = "";
+                    marcaNuevo.Text = "";
+                } else
+                {
+                    MessageBox.Show("No ha digitado ninguna información");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No ha digitado ninguna referencia");
             }
 
         }

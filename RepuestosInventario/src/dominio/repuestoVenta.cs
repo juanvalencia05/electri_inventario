@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace RepuestosInventario.src.dominio
 {
-    internal class repuestoVenta
+    public class repuestoVenta
     {
         public repuesto repuesto;
         public int cantidad;
+
+        public repuestoVenta() {}
 
         public repuestoVenta(repuesto repuesto, int cantidad)
         {
@@ -25,7 +27,5 @@ namespace RepuestosInventario.src.dominio
         {
             get { return cantidad; }
         }
-
-
     }
 }

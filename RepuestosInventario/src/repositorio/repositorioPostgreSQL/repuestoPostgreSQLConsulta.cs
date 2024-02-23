@@ -74,7 +74,7 @@ namespace RepuestosInventario.src.repositorio.repositorioPostgreSQL
             try
             {
                 PostgreSQLConfiguration objetoConexion = new PostgreSQLConfiguration();
-                string sqlConsulta = "select * from repuesto WHERE nombre LIKE'" + nombre + "';";
+                string sqlConsulta = "select * from repuesto WHERE nombre LIKE'%" + nombre + "%';";
                 tablaRespuestos.DataSource = null;
 
                 NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(sqlConsulta, objetoConexion.establecerConexion());
