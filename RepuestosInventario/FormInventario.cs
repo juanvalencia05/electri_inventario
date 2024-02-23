@@ -69,7 +69,11 @@ namespace RepuestosInventario
         }
         private void vaciarTables()
         {
-
+            tablaBusquedaReferencia.DataSource = null;
+            tablaBusquedaNombre.DataSource = null;
+            tablaBusquedaMarca.DataSource = null;
+            dataGridViewImprimir.DataSource = null;
+            tablaRetiro.DataSource = null;
         }
         void formatoMoneda(TextBox textBox) 
         {
@@ -122,7 +126,7 @@ namespace RepuestosInventario
                     if (ingresoCheck.Checked && repuesto != null)
                     {
                         cant = (short)(repuesto.Cantidad + short.Parse(cantidadModificar.Text));
-                        this.retiroIngresoCantidad(referenciaModificar.Text, cant);
+                        this.repuestosComando.modificarRepuesto(referenciaModificar.Text, cant);
 
                     }
                     else if (ventaCheck.Checked && repuesto != null)
@@ -130,7 +134,7 @@ namespace RepuestosInventario
                         cant = (short)(repuesto.Cantidad - short.Parse(cantidadModificar.Text));
                         if (cant >= 0)
                         {
-                            this.retiroIngresoCantidad(referenciaModificar.Text, cant);
+                            this.repuestosComando.modificarRepuesto(referenciaModificar.Text, cant);
                         }
                         else
                         {
@@ -153,27 +157,23 @@ namespace RepuestosInventario
             {
                 MessageBox.Show("No se pudo realizar la operación");
             }
-
-
         }
         private void buscarReferenciaBT_Click(object sender, EventArgs e)
         {
             this.repuestosConsulta.mostrarRepuestosPorReferencia(tablaBusquedaReferencia, busquedaReferenciaText.Text);
+            busquedaReferenciaText.Text = "";
 
         }
         private void buscarNombreBT_Click(object sender, EventArgs e)
         {
             this.repuestosConsulta.mostrarRepuestosPorNombre(tablaBusquedaNombre, nombreBuscar.Text);
+            nombreBuscar.Text = "";
         }
 
         private void BusquedaMarcaBT_Click(object sender, EventArgs e)
         {
             this.repuestosConsulta.mostrarRepuestosPorMarca(tablaBusquedaMarca, busquedaMarcaText.Text);
-        }
-
-        private void retiroIngresoCantidad(string referencia , short cantidad)
-        {
-            this.repuestosComando.modificarRepuesto(referenciaModificar.Text, cantidad);
+            busquedaMarcaText.Text = "";
         }
         private void ventaCheck_CheckedChanged(object sender, EventArgs e)
         {
@@ -252,6 +252,7 @@ namespace RepuestosInventario
         {
             ocultarSubMenu();
             ocultarGroup();
+            vaciarTables();
             groupBoxRegistro.Visible = true;
         }
 
@@ -260,27 +261,27 @@ namespace RepuestosInventario
             this.repuestosConsulta.mostrarRepuestos(listaRepuestos);
             ocultarSubMenu();
             ocultarGroup();
+            vaciarTables();
             groupBoxLista.Visible = true;
         }
         private void ventaMenu_Click(object sender, EventArgs e)
         {
             ocultarSubMenu();
             ocultarGroup();
-            referenciaModificar.Text = "";
-            cantidadModificar.Text = "";
+            vaciarTables();
             groupBoxVenta.Visible = true;
         }
         private void buscarReferenciaMenu_Click(object sender, EventArgs e)
         {
             ocultarGroup();
-            busquedaReferenciaText.Text = "";
+            vaciarTables();
             groupBoxBuscarReferencia.Visible = true;
         }
 
         private void bucarNombreMenu_Click(object sender, EventArgs e)
         {
             ocultarGroup();
-            nombreBuscar.Text = "";
+            vaciarTables();
             groupBoxBuscarNombre.Visible = true;
 
         }
@@ -288,7 +289,7 @@ namespace RepuestosInventario
         private void buscarMarcaMenu_Click(object sender, EventArgs e)
         {
             ocultarGroup();
-            busquedaMarcaText.Text = "";
+            vaciarTables();
             groupBusquedaMarca.Visible = true;
         }
 
@@ -296,8 +297,7 @@ namespace RepuestosInventario
         {
             ocultarSubMenu();
             ocultarGroup();
-            precioModificar.Text = "";
-            costoModificar.Text = "";
+            vaciarTables();
             groupBoxActualizar.Visible = true;
         }
 
@@ -305,7 +305,7 @@ namespace RepuestosInventario
         {
             ocultarGroup();
             ocultarSubMenu();
-            referenciaEliminar.Text = "";
+            vaciarTables();
             groupBoxEliminar.Visible = true;
         }
 
@@ -426,6 +426,7 @@ namespace RepuestosInventario
         {
             ocultarGroup();
             ocultarSubMenu();
+            vaciarTables();
             groupBoxImprecion.Visible = true;
         }
 

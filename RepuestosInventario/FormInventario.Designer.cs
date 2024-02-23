@@ -1528,6 +1528,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(898, 553);
+            this.Controls.Add(this.groupBoxLista);
             this.Controls.Add(this.groupBoxActualizar);
             this.Controls.Add(this.groupBoxBuscarNombre);
             this.Controls.Add(this.groupBoxVenta);
@@ -1536,7 +1537,6 @@
             this.Controls.Add(this.groupBusquedaMarca);
             this.Controls.Add(this.groupBoxEliminar);
             this.Controls.Add(this.groupBoxRegistro);
-            this.Controls.Add(this.groupBoxLista);
             this.Controls.Add(this.panelMenu);
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
