@@ -14,7 +14,6 @@ namespace RepuestosInventario
         private repuestoPosgreSQLComando repuestosComando = new repuestoPosgreSQLComando();
         List<repuestoVenta> inventario = new List<repuestoVenta>();
         private DataGridViewButtonColumn eliminarButtonColumn;
-        Imprimir printer;
 
         public FormInventario()
         {
@@ -346,7 +345,10 @@ namespace RepuestosInventario
                     dataGridViewImprimir.Columns.Add(eliminarButtonColumn);
                 }
                 this.agregarColumnaAlFinal();
-            }else if (repuestoAgregado == null) {
+                dataGridViewImprimir.Columns["precio"].DefaultCellStyle.Format = "#,#";
+                buscarImprimirTB.Text = "";
+            }
+            else if (repuestoAgregado == null) {
                 MessageBox.Show("No hay repuesto con esa referencia");
 
             } else
@@ -409,7 +411,6 @@ namespace RepuestosInventario
         {
             if (e.RowIndex >= 0 && e.RowIndex < inventario.Count)
             {
-                // Obtener el nuevo valor de cantidad desde la celda editada
                 int nuevaCantidad;
                 if (int.TryParse(dataGridViewImprimir.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out nuevaCantidad))
                 {
@@ -429,7 +430,6 @@ namespace RepuestosInventario
             vaciarTables();
             groupBoxImprecion.Visible = true;
         }
-
         private void imprimirBT_Click(object sender, EventArgs e)
         {
             bool cantidadCorrecta = true;
@@ -459,41 +459,48 @@ namespace RepuestosInventario
                         {
                             this.repuestosComando.modificarRepuesto(repuestoIm.Repuesto.Referencia, (short)(repuestoIm.Repuesto.Cantidad - repuestoIm.Cantidad));
                         }
-                        dataGridViewImprimir.DataSource = null;
                         buscarImprimirTB.Text = "";
                         Imprimir printer = new Imprimir(this.inventario, totalPagar, formaDePago);
                         printer.Print();
                         this.inventario.Clear();
+                        dataGridViewImprimir.DataSource = null;
+
                     }
                 }
             } else
             {
                 MessageBox.Show("No hay repuesto seleccionados");
             }
-
         }
 
         private void actualizarRepuesto_Click(object sender, EventArgs e)
         {
-            if(referenciaModificarPrecio.Text != "")
-            { 
-                if(referenciaNueva.Text != "" || nombreNuevo.Text != "" || marcaNuevo.Text != "")
-                {
-                    this.repuestosComando.actualizarRepuesto(referenciaModificarPrecio.Text, referenciaNueva.Text, nombreNuevo.Text, marcaNuevo.Text);
-                    referenciaModificarPrecio.Text = "";
-                    referenciaNueva.Text = "";
-                    nombreNuevo.Text = "";
-                    marcaNuevo.Text = "";
-                } else
-                {
-                    MessageBox.Show("No ha digitado ninguna información");
-                }
-            }
-            else
-            {
-                MessageBox.Show("No ha digitado ninguna referencia");
-            }
 
+            if (!this.repuestosConsulta.consultaDevuelveInformacion(referenciaNueva.Text))
+            {
+                if (referenciaModificarPrecio.Text != "")
+                {
+                    if (referenciaNueva.Text != "" || nombreNuevo.Text != "" || marcaNuevo.Text != "")
+                    {
+                        this.repuestosComando.actualizarRepuesto(referenciaModificarPrecio.Text, referenciaNueva.Text, nombreNuevo.Text, marcaNuevo.Text);
+                        referenciaModificarPrecio.Text = "";
+                        referenciaNueva.Text = "";
+                        nombreNuevo.Text = "";
+                        marcaNuevo.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("No ha digitado ninguna información");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No ha digitado ninguna referencia");
+                }
+            } else
+            {
+                MessageBox.Show("Recuerde que la referencia es única ya existe una igual");
+            }
         }
     }
 }

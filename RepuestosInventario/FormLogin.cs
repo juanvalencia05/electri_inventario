@@ -25,18 +25,12 @@ namespace RepuestosInventario
             log log;
             log = repuestosConsulta.inicioSesion(usuario.Text,contrasena.Text);
 
-
             if(log != null) 
             { 
                 FormInventario inventario = new FormInventario();
                 inventario.Show();
                 this.Hide();
             }
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void usuario_Enter(object sender, EventArgs e)

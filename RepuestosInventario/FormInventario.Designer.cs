@@ -1528,11 +1528,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(898, 553);
-            this.Controls.Add(this.groupBoxLista);
+            this.Controls.Add(this.groupBoxImprecion);
             this.Controls.Add(this.groupBoxActualizar);
+            this.Controls.Add(this.groupBoxLista);
             this.Controls.Add(this.groupBoxBuscarNombre);
             this.Controls.Add(this.groupBoxVenta);
-            this.Controls.Add(this.groupBoxImprecion);
             this.Controls.Add(this.groupBoxBuscarReferencia);
             this.Controls.Add(this.groupBusquedaMarca);
             this.Controls.Add(this.groupBoxEliminar);

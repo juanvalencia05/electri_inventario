@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using RepuestosInventario.src.dominio;
 using System.Collections.Generic;
 using System;
-using System.IO;
 
 namespace RepuestosInventario.src.trasnversal
 {
@@ -13,13 +12,13 @@ namespace RepuestosInventario.src.trasnversal
         private PrintDocument printDocument = new PrintDocument();
         private List<repuestoVenta> repuestos = new List<repuestoVenta>();
         private string nombreEmpresa = "Electripareja";
-        private string nitEmpresa = "";
+        private string nitEmpresa = "39448792";
         private string telefonoEmpresa = "300 1527391";
-        private DateTime fechaActual;
+        private DateTime fechaActual = DateTime.Now;
         private string formaPago;
         private double totalPago;
         private string mensajeAgradecimiento= "Muchas gracias por su compra";
-        private Image logoEmpresa;
+        private Image logoEmpresa = Properties.Resources.ElectriparejaImagen;
 
         public Imprimir(List<repuestoVenta> repuestos, double totalPagar, string formaPago)
         {
@@ -41,57 +40,119 @@ namespace RepuestosInventario.src.trasnversal
         private void PrintPageHandler(object sender, PrintPageEventArgs e)
         {
             Graphics graphics = e.Graphics;
-            Font font = new Font("Arial", 12);
+            Font font = new Font("Arial", 8);
             float fontHeight = font.GetHeight();
-            int startX = 10;
+            int paperWidth = e.PageBounds.Width;
+            int startX = (int)(paperWidth - 100) / 2; // Centrar el logo
             int startY = 10;
+            int lineHeight = 2; // Altura de la línea punteada
+            int lineSpacing = 5;
+            Pen pen = new Pen(Brushes.Black, 1);
+            pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
 
-            // Imprimir logo de la empresa
             if (logoEmpresa != null)
             {
                 graphics.DrawImage(logoEmpresa, new Rectangle(startX, startY, 100, 100));
-                startX += 110; // Ajustar la posición para el texto
+                startY += 110;
             }
+            int nombreEmpresaWidth = (int)graphics.MeasureString(nombreEmpresa, font).Width;
+            int nitEmpresaWidth = (int)graphics.MeasureString("NIT: " + nitEmpresa, font).Width;
+            int telefonoEmpresaWidth = (int)graphics.MeasureString("Celular: " + telefonoEmpresa, font).Width;
+            int fechaActualWidth = (int)graphics.MeasureString("Fecha: " + fechaActual.ToString("dd/MM/yyyy HH:mm"), font).Width;
 
-            // Imprimir nombre de la empresa
+            // Centrar el nombre de la empresa
+            startX = (paperWidth - nombreEmpresaWidth) / 2;
             graphics.DrawString(nombreEmpresa, font, Brushes.Black, startX, startY);
             startY += (int)fontHeight + 5;
 
-            // Imprimir NIT de la empresa
+            // Centrar el NIT de la empresa
+            startX = (paperWidth - nitEmpresaWidth) / 2;
             graphics.DrawString("NIT: " + nitEmpresa, font, Brushes.Black, startX, startY);
             startY += (int)fontHeight + 5;
 
-            // Imprimir número telefónico de la empresa
+            // Centrar el número telefónico de la empresa
+            startX = (paperWidth - telefonoEmpresaWidth) / 2;
             graphics.DrawString("Celular: " + telefonoEmpresa, font, Brushes.Black, startX, startY);
             startY += (int)fontHeight + 5;
 
-            // Imprimir fecha actual
-            graphics.DrawString("Fecha: " + fechaActual.ToString("dd/MM/yyyy"), font, Brushes.Black, startX, startY);
+            graphics.DrawString("Fecha: " + fechaActual.ToString("dd/MM/yyyy"), font, Brushes.Black, 0, startY);
+
+            startX = (paperWidth - fechaActualWidth - 10) / 2;
+            graphics.DrawString("Hora: " + fechaActual.ToString("HH:mm"), font, Brushes.Black, startX + 100, startY);
             startY += (int)fontHeight + 5;
 
-            string encabezados = "Ref\tNombre\tCantidad\tPrecio";
-            graphics.DrawString(encabezados, font, Brushes.Black, startX, startY + (int)fontHeight + 5);
-            startY += (int)fontHeight + 5;
+            // Dibujar línea punteada debajo de cada producto
+            graphics.DrawLine(pen, 0, startY, paperWidth, startY);
+            startY += lineHeight;
+
+            // Espacio debajo de la línea punteada
+            startY += lineSpacing;
+
+            string encabezados = "Nom\tCant";
+            graphics.DrawString(encabezados, font, Brushes.Black, 0, startY);
+
+            string encabezado2 = "Precio";
+            graphics.DrawString(encabezado2, font, Brushes.Black, startX + 50, startY);
+
+            string encabezado3 = "Total";
+            graphics.DrawString(encabezado3, font, Brushes.Black, paperWidth - 70, startY);
+            startY += (int)fontHeight + 10;
 
             // Imprimir lista de productos
             foreach (var producto in repuestos)
             {
-                string lineaProducto = $"{producto.repuesto.Referencia}\t{producto.repuesto.Nombre}\t{producto.cantidad}\t{producto.repuesto.Precio.ToString("C")}";
-                graphics.DrawString(lineaProducto, font, Brushes.Black, startX, startY);
-                startY += (int)fontHeight + 5;
+                startY += lineSpacing;
+
+                string nombreProducto = $"{producto.repuesto.Nombre}";
+                graphics.DrawString(nombreProducto, font, Brushes.Black, 0, startY); // Imprimir nombre del producto desde el borde izquierdo
+                startY += (int)fontHeight + 2;
+
+                string cantidadProducto = $"{producto.cantidad}";
+                graphics.DrawString(cantidadProducto, font, Brushes.Black, 50, startY); // Imprimir nombre del producto desde el borde izquierdo
+
+                string precioProducto = (producto.repuesto.Precio).ToString("C");
+                graphics.DrawString(precioProducto, font, Brushes.Black, startX + 50, startY); // Imprimir nombre del producto desde el borde izquierdo
+
+                string totalProducto = (producto.repuesto.Precio * producto.cantidad).ToString("C");
+                graphics.DrawString(totalProducto, font, Brushes.Black, paperWidth - 80, startY); // Imprimir nombre del producto desde el borde izquierdo
+                startY += (int)fontHeight + 2;
+
+                graphics.DrawLine(pen, 0, startY, paperWidth, startY);
+                startY += lineHeight;
+
+                startY += lineSpacing;
             }
 
-            // Imprimir total a pagar
-            graphics.DrawString("Total a pagar: " + totalPago.ToString("C"), font, Brushes.Black, startX, startY);
+            graphics.DrawString("Total a pagar: ", font, Brushes.Black, 0, startY);
+
+            // Imprimir el valor del total a pagar alineado a la derecha
+            graphics.DrawString(totalPago.ToString("C"), font, Brushes.Black, paperWidth - 80, startY);
             startY += (int)fontHeight + 5;
 
             // Imprimir forma de pago
-            graphics.DrawString("Forma de pago: " + formaPago, font, Brushes.Black, startX, startY);
+            graphics.DrawString("Forma de pago: " + formaPago, font, Brushes.Black, 0, startY);
             startY += (int)fontHeight + 5;
 
-            // Imprimir mensaje de agradecimiento
-            graphics.DrawString(mensajeAgradecimiento, font, Brushes.Black, startX, startY);
+            // Dibujar línea punteada debajo de cada producto
+            graphics.DrawLine(pen, 0, startY, paperWidth, startY);
+            startY += lineHeight;
+
+            // Espacio debajo de la línea punteada
+            startY += lineSpacing;
+
+            // Imprimir forma de pago
+            graphics.DrawString("Cliente: ", font, Brushes.Black, 0, startY);
             startY += (int)fontHeight + 5;
+
+            graphics.DrawString("CC/NIT: ", font, Brushes.Black, 0, startY);
+            startY += (int)fontHeight + 5;
+
+            // Dibujar línea punteada debajo de cada producto
+            graphics.DrawLine(pen, 0, startY, paperWidth, startY);
+            startY += lineHeight;
+
+            // Imprimir mensaje de agradecimiento
+            graphics.DrawString(mensajeAgradecimiento, font, Brushes.Black, 60, startY);
 
         }
     }
